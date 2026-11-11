@@ -1,0 +1,7 @@
+.audio-controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:-5px 0 18px;font-size:10px;color:#d7dfd0}
+.audio-controls button{font-size:11px;min-height:34px;padding:6px 12px;background:#0a191dc9}
+.audio-controls button[aria-pressed=true]{background:#b9cba329;border-color:#b9cba373}
+.audio-controls label{display:flex;align-items:center;gap:8px}.audio-controls input{width:90px;accent-color:#c1d0ac}
+.audio-controls output{min-width:30px;font-variant-numeric:tabular-nums}.audio-controls a{margin-left:auto;color:#cad6c2;font-size:10px}
+.scenery-only .audio-controls{display:none}
+@media(max-width:720px){.audio-controls{gap:8px}.audio-controls input{width:65px}.audio-controls a{margin-left:0}}

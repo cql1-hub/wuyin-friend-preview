@@ -1,0 +1,520 @@
+:root {
+ --fog-silver: #a4a6a7;
+ --charcoal: #35373a;
+ --silver: #d4d2cb;
+ --bronze: #aca08c;
+ --seal-gold: #d8bb83;
+ --ivory: #ded9cd;
+ --ink: #e3e0d7;
+ --muted: #c3c1b9;
+ --line: #d4d2cb36;
+ --display: "Veil Serif", "Noto Serif SC", "Songti SC", SimSun, serif;
+ --controls: "Noto Sans SC", "PingFang SC", "Microsoft YaHei UI", sans-serif;
+ background: var(--charcoal);
+}
+.exhibition {font: 13px/1.55 var(--controls)}
+.exhibition button, .exhibition summary, .exhibition select {font: 13px/1.4 var(--controls)}
+.exhibition button, .exhibition select {
+ border-radius: 0;
+ border-color: transparent;
+ background: transparent;
+}
+.exhibition button:hover:not(:disabled), .exhibition summary:hover {color: var(--ink); background: #d4d2cb0d; border-color: transparent}
+.exhibition :focus-visible {outline-color: var(--silver)}
+.exhibition .experience > header {
+ min-height: 0;
+ align-items: center;
+ flex-wrap: nowrap;
+ gap: 24px;
+ padding: 0 0 13px;
+}
+.exhibition header .brand svg {color: var(--bronze); width: 30px; height: 33px}
+.exhibition header .brand > span {white-space: nowrap; font: 30px/1.1 var(--display); color: var(--ink)}
+.exhibition header .brand small {display: none}
+.exhibition .masthead-note {display: block; margin: 0 auto 0 0; color: var(--muted); font: 13px/1.6 var(--display)}
+.exhibition .header-actions {width: auto; display: flex}
+.exhibition .header-actions #tools-toggle {border: 0; background: transparent; color: var(--silver); font-size: 13px}
+.exhibition:not(.gesture-immersive) .header-actions #camera,
+.exhibition:not(.scenery-only) #scenery-exit,
+.exhibition.scenery-only #tools-toggle {display: none}
+.exhibition:not(.fool-preview) .header-actions #avatar-preview {display: none !important}
+.exhibition.fool-preview .catalog-handle,
+.exhibition.gesture-immersive .catalog-handle,
+.exhibition.fool-preview .masthead-note {display: none}
+.exhibition .film-shade {background: linear-gradient(90deg,#242529b8,transparent 39%,transparent 64%,#2425296e),linear-gradient(0deg,#242529c9,transparent 35%,transparent 75%,#2425298c)}
+.exhibition #world-scenery {background:
+ radial-gradient(ellipse at 50% 52%, #a6a8a8a6, transparent 49%),
+ linear-gradient(180deg,#414447,#747679 57%,#37393b)}
+.exhibition #world-scenery::before {
+ content: "";
+ position: absolute;
+ inset: 0;
+ background: url('media/art-styles/mist-impression.png') center / cover;
+ filter: grayscale(1) contrast(.7);
+ opacity: .25;
+}
+.exhibition #background-film, .exhibition .world-scene[data-scene="painted"] {filter: grayscale(1)}
+.exhibition .world-scene:not([data-scene="painted"]) {filter: saturate(.40)}
+.exhibition[data-environment="exhibition"] .film-shade {
+ background: radial-gradient(ellipse at 50% 51%,transparent 17%,#2b2d306e 83%),linear-gradient(0deg,#292b2ed6,transparent 33%);
+}
+.exhibition.scenery-only .film-shade {background: none}
+
+.exhibition:not(.gesture-immersive):not(.fool-preview) .experience {
+ width: 100%; max-width: none; height: 100svh;
+ display: grid; grid-template-rows: auto minmax(0,1fr);
+ padding: 26px clamp(24px,4.3vw,76px) 20px;
+}
+.exhibition .glass-shell {min-height: 0}
+.exhibition:not(.gesture-immersive) .glass-shell > .shell-toolbar {display: none}
+.exhibition:not(.gesture-immersive):not(.fool-preview) .glass-shell {
+ display: grid;
+ grid-template-rows: minmax(0,1fr) auto;
+}
+.exhibition.scenery-only:not(.gesture-immersive):not(.fool-preview) .glass-shell {display: none}
+.exhibition:not(.gesture-immersive) .workspace {
+ display: block; position: relative; min-height: 0;
+}
+.exhibition:not(.gesture-immersive) .artifact-pane,
+.exhibition:not(.gesture-immersive) .artifact-pane.domain-open {
+ display: block; position: absolute; inset: 0; min-height: 0; overflow: visible;
+}
+.exhibition:not(.gesture-immersive) .artifact-pane .render-stage {
+ position: absolute; inset: 0;
+ width: 100%; height: 100%; min-height: 0; max-height: none;
+}
+.exhibition:not(.gesture-immersive) .artifact-pane .artifact-heading {
+ display: block; position: absolute; inset: 20px 0 auto; padding: 0;
+ text-align: center; pointer-events: none;
+}
+.exhibition .artifact-pane .identity h1:focus {outline: none}
+.exhibition .artifact-pane .identity h1 {font: 30px/1.45 var(--display); letter-spacing: .06em; color: var(--ink); white-space: nowrap}
+.exhibition:not(.gesture-immersive) .artifact-pane .stage-caption {
+ position: absolute; inset: auto 0 18px; padding: 0; pointer-events: none;
+}
+.exhibition .stage-caption #phase {font-size: 13px; color: var(--ink); text-shadow: 0 1px 8px #232529}
+.exhibition .stage-caption span:last-child {display: none}
+.exhibition .case-introduction {
+ position: absolute; left: 0; top: 50%; transform: translateY(-48%);
+ display: block; width: min(215px,21vw); margin: 0; padding: 0;
+}
+.exhibition .case-introduction h2 {
+ max-width: 7em; margin: 0 0 29px; font: 30px/1.5 var(--display);
+ letter-spacing: .045em; color: var(--ink); text-wrap: balance;
+}
+.exhibition .relic-context {display: block; padding: 13px 0 0; border-color: var(--line); margin: 0}
+.exhibition .relic-context h3 {font: 16px/1.5 var(--display); color: var(--ink); margin: 0 0 9px}
+.exhibition .relic-context p {font: 14px/1.9 var(--display); margin: 0 0 8px; color: var(--silver)}
+.exhibition .relic-context .case-note {color: var(--muted)}
+.exhibition .case-path {display: flex; align-items: flex-start; flex-wrap: wrap; gap: 7px 17px; margin-top: 22px}
+.exhibition .case-begin {
+ display: block; width: auto; min-height: 38px; padding: 7px 15px;
+ border-block: 1px solid #d8bb8394; color: var(--seal-gold);
+ background: #a98a4920; letter-spacing: .12em;
+}
+.exhibition .case-begin:hover:not(:disabled) {background: #a98a4935 !important; color: #efd4a1; border-block-color: var(--seal-gold)}
+.exhibition .case-free, .exhibition .exhibit-action {
+ display: inline-block; margin: 0; min-height: 37px; padding: 4px 0;
+ background: transparent; color: var(--silver); border: 0;
+ text-decoration: underline; text-underline-offset: 5px; text-decoration-color: #d4d2cb55;
+}
+.exhibition .exhibit-action {color: var(--ink)}
+.exhibition .case-free:hover:not(:disabled), .exhibition .exhibit-action:hover:not(:disabled) {background: transparent; text-decoration-color: currentColor}
+.exhibition .catalog-handle {
+ position: absolute; right: 0; top: 50%; z-index: 2;
+ min-height: 42px; padding: 8px 0 8px 15px;
+ color: var(--muted); border-left: 1px solid var(--line); letter-spacing: .12em;
+}
+.exhibition .catalog-handle:hover:not(:disabled) {border-left: 1px solid var(--silver)}
+.exhibition .chapter-feedback {display: none}
+.exhibition .chapter-feedback:not([hidden]) {position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%)}
+.exhibition footer {display: none}
+
+.exhibition:not(.gesture-immersive) .ritual-hud {
+ display: flex; justify-content: center; align-items: center; gap: 8px 20px; min-height: 0;
+ margin: 0; padding: 9px 0 0; border: 0; border-top: 1px solid var(--line); background: none;
+}
+.exhibition:not(.gesture-immersive) .ritual-hud > :is(.ritual-readout,progress,.relic-source,[data-effects-toggle],#hand-status,#relic-inspect) {display: none}
+.exhibition .ritual-hud .ritual-form {display: flex; width: auto; flex: 0 1 auto; margin: 0; color: var(--muted); font-size: 13px}
+.exhibition .ritual-form select {
+ min-height: 36px; width: auto; max-width: 180px; padding: 4px 23px 4px 5px;
+ background: none; color: var(--ink); border: 0; border-bottom: 1px solid var(--line); font-size: 13px;
+}
+.exhibition input[type="range"] {accent-color: var(--silver)}
+.exhibition select option {color: #e3e0d7; background: var(--charcoal)}
+.exhibition:not(.gesture-immersive) .ritual-hud button {
+ width: auto; min-width: 0; min-height: 36px; padding: 5px 1px;
+ background: transparent; color: var(--silver); font-weight: 400; white-space: nowrap;
+}
+.exhibition:not(.gesture-immersive) .ritual-hud .effect-demo:disabled {background: none; color: var(--muted)}
+.exhibition .ritual-hud button:hover:not(:disabled) {background: none; color: var(--ink); text-decoration: underline; text-underline-offset: 5px}
+.exhibition .ritual-hud label[for="energy"] {display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted)}
+.exhibition .ritual-hud input {width: 73px; accent-color: var(--silver)}
+.exhibition .ritual-hud output {display: none}
+.exhibition-gesture-hint {flex-basis: 100%; margin: 0; text-align: center; font-size: 12px; color: var(--muted)}
+.exhibition.gesture-immersive .exhibition-gesture-hint,
+.exhibition.gesture-immersive .ritual-hud label[for="energy"] {display: none}
+.exhibition.gesture-immersive .ritual-hud,
+.exhibition.gesture-immersive .header-actions button {background: #333638df; border-color: var(--line)}
+.exhibition .toast.show {background: #323538f2; color: var(--ink); border-color: var(--line)}
+.exhibition #failure {background: #35373ac7}
+
+#exhibition-drawer {
+ position: fixed; z-index: 85; inset: 75px 24px 24px auto;
+ width: min(420px,calc(100vw - 48px)); overflow: auto; overscroll-behavior: contain;
+ padding: 17px 24px 24px; color: var(--ink); background: #393b3f;
+ border-left: 1px solid var(--line); box-shadow: -15px 18px 45px #19191c55;
+ animation: drawer-arrive .34s ease-out both;
+}
+@keyframes drawer-arrive {from {opacity: 0; transform: translateX(14px)}}
+.drawer-top {
+ display: flex; gap: 12px; justify-content: space-between; align-items: center;
+ position: sticky; top: -17px; z-index: 5; margin-bottom: 19px;
+ padding: 8px 0; border-bottom: 1px solid var(--line); background: inherit;
+}
+.drawer-top nav {display: flex; gap: 13px}
+.exhibition .drawer-top button {padding: 5px 0; min-height: 34px; color: inherit}
+.drawer-top [aria-pressed="true"] {border-bottom: 1px solid currentColor}
+.exhibition #exhibition-drawer[data-section="archive"] {background: var(--ivory); color: #303234; color-scheme: light}
+.exhibition #exhibition-drawer[data-section="archive"] .drawer-top {background: var(--ivory); border-color: #766d5a40}
+.exhibition #exhibition-drawer[data-section="archive"] .drawer-top button:hover {color: #252627}
+.exhibition #exhibition-drawer .control-column {
+ position: static; display: block; width: 100%; max-height: none; padding: 0;
+ border: 0; border-radius: 0; background: none; color: inherit; box-shadow: none; overflow: visible;
+}
+.exhibition #exhibition-drawer .control-column :is(h2,h3,h4,p,small,label,summary,strong,span,legend) {color: #363636}
+.exhibition #exhibition-drawer .control-column :is(p,blockquote,.chapter-reading) {font: 15px/1.8 var(--display)}
+.exhibition #exhibition-drawer .control-column :is(small,label,summary,button,select,input) {font-size: 13px}
+.exhibition #exhibition-drawer .control-column .chapter-bar h2 {font: 28px/1.4 var(--display)}
+.exhibition #exhibition-drawer .control-column :is(h3,h4) {font: 16px/1.65 var(--display)}
+.exhibition #exhibition-drawer .control-column :is(button,select,input,textarea,.chapter-primary) {
+ background: #ccc5b6; color: #303234; border-color: #81766745; border-radius: 0;
+}
+.exhibition #exhibition-drawer .control-column button:hover:not(:disabled) {background: #bdb5a5; color: #242527}
+.exhibition #exhibition-drawer .control-column input::placeholder {color: #55534e}
+.exhibition #exhibition-drawer .control-column :is(.chapter-reading,.chapter-objective) {background: #d2cbbf; color: #353335}
+.exhibition #exhibition-drawer .control-column .chapter-objective {border-color: #81766745}
+.exhibition .control-column .case-letter {padding: 10px 0 10px 16px; border-color: #887551}
+.exhibition .control-column .case-letter cite {color: #565046; font-size: 13px}
+#exhibition-drawer[data-unsealing] .case-letter {animation: unseal .65s ease-out both}
+@keyframes unseal {from {opacity: .3; clip-path: inset(0 0 100% 0)} to {clip-path: inset(0)}}
+.drawer-catalog .relics {width: 100%; display: flex; flex-direction: column; gap: 0; background: none}
+.exhibition .drawer-catalog .relic {
+ width: 100%; min-height: 62px; align-items: flex-start; padding: 12px 16px;
+ border-bottom: 1px solid var(--line); background: none;
+}
+.exhibition .drawer-catalog .relic b {color: var(--ink); font: 16px/1.5 var(--display)}
+.exhibition .drawer-catalog .relic small {color: var(--muted); font-size: 12px}
+.exhibition .drawer-catalog .relic.active::after {top: 22px; bottom: auto; left: 0; background: var(--silver)}
+.drawer-settings details {border-bottom: 1px solid var(--line); padding: 9px 0}
+.drawer-settings summary {cursor: pointer; padding: 7px 0}
+.scene-settings {display: flex; gap: 6px 12px; flex-wrap: wrap; align-items: center; padding: 8px 0}
+.scene-settings .scene-controls, .scene-settings .audio-controls {
+ display: flex; flex-wrap: wrap; width: 100%; position: static; margin: 0;
+ padding: 0; background: none; border: 0; color: var(--silver); text-shadow: none; font-size: 13px;
+}
+.scene-settings .scene-controls select {background: var(--charcoal); border-bottom: 1px solid var(--line); padding: 4px; min-height: 35px}
+.exhibition #scene-status, .scene-settings a, .scene-settings #sound-level {font-size: 12px; color: var(--muted)}
+.exhibition .scene-settings button, .exhibition .gesture-settings button {
+ color: var(--silver); padding: 6px 8px; border-bottom: 1px solid var(--line);
+}
+.exhibition .drawer-settings #guide {margin: 0; padding: 0; border: 0; color: var(--silver)}
+.exhibition .drawer-settings #guide p {font: 14px/1.8 var(--display); color: var(--silver)}
+.gesture-lesson {display: grid; grid-template-columns: repeat(3,1fr); list-style: none; padding: 0; gap: 8px}
+.gesture-lesson li {display: grid; justify-items: center; align-content: end; color: var(--silver); opacity: .48}
+.gesture-lesson li.active {opacity: 1}
+.gesture-lesson b {font: 16px/1.5 var(--display); padding-top: 7px}
+.gesture-lesson li p {display: none}
+.lesson-caption {min-height: 3em; color: var(--ink); font: 14px/1.65 var(--display)}
+.lesson-hand {position: relative; display: block; width: 32px; height: 28px; margin-top: 39px; border: 1px solid var(--silver); border-top: 0; border-radius: 0 0 11px 11px; transform: rotate(-12deg)}
+.lesson-hand i {position: absolute; bottom: 100%; width: 6px; height: 25px; border: 1px solid var(--silver); border-radius: 4px 4px 0 0; transform-origin: bottom; transition: transform .5s ease, height .5s ease}
+.lesson-hand i:nth-child(1) {left: 0; bottom: 32%; transform: rotate(-42deg); height: 18px}
+.lesson-hand i:nth-child(2) {left: 2px; height: 27px}
+.lesson-hand i:nth-child(3) {left: 9px; height: 33px}
+.lesson-hand i:nth-child(4) {left: 16px; height: 29px}
+.lesson-hand i:nth-child(5) {left: 23px; height: 22px}
+.gesture-lesson li:first-child i:first-child {transform: rotate(22deg); height: 24px}
+.gesture-lesson li:first-child i:nth-child(2) {transform: rotate(-22deg); height: 15px}
+.gesture-lesson li:last-child i {height: 10px}
+.gesture-lesson li.active .lesson-hand {animation: gesture-example 1.2s ease-out}
+@keyframes gesture-example {0% {opacity: .4; transform: translateY(5px) rotate(-21deg)}}
+.exhibition #card-detail figure {border-color: transparent}
+.exhibition #card-detail[data-card="2"] figure {filter: drop-shadow(0 0 20px #c9a46742)}
+
+.arrival {background: #45464b; color: #e4ded2}
+.arrival::before {
+ content: ""; position: absolute; inset: 0; z-index: -1;
+ background: url('media/art-styles/mist-impression.png') center / cover;
+ filter: grayscale(1) contrast(.76); opacity: .48;
+}
+.arrival .arrival-fog {opacity: .63; filter: grayscale(1) brightness(1.14); mix-blend-mode: screen}
+.arrival .arrival-vignette {background: radial-gradient(ellipse at 50% 47%,#27282d6e,#26282b33 54%,#26282baf)}
+.arrival .arrival-coin {width: 132px; height: 132px; filter: grayscale(1); opacity: .68}
+.arrival .arrival-gate h1 {font: 32px/1.4 var(--display); margin: 8px 0 19px}
+.arrival .arrival-enter {font: 16px/1.4 var(--display); color: var(--ink); border-color: #d4d2cb82; background: #35373a4f}
+.arrival .arrival-gate .arrival-disclaimer {color: #cfc3ad; font: 13px/1.7 var(--display); letter-spacing: .04em; text-shadow: 0 1px 6px #242528}
+.arrival[data-phase="departing"] {transition: opacity .9s ease-out}
+.arrival[data-phase="departing"] .arrival-fog {transform: scale(1.28); filter: grayscale(1) blur(7px); opacity: .55; transition: transform .9s ease-out, opacity .9s}
+.arrival[data-phase="departing"] .arrival-gate {opacity: 0; transition: opacity .22s ease-out}
+
+@media (max-width: 760px) {
+ .exhibition:not(.gesture-immersive):not(.fool-preview) .experience {height: auto; min-height: 100svh; display: block; padding: 16px 18px}
+ .exhibition .experience > header {gap: 10px}
+ .exhibition .masthead-note {font-size: 12px}
+ .exhibition:not(.gesture-immersive):not(.fool-preview) .workspace {display: flex; flex-direction: column; gap: 0}
+ .exhibition .case-introduction {position: static; order: 2; width: 100%; transform: none; padding: 8px 0 16px}
+ .exhibition .case-introduction h2 br {display: none}
+ .exhibition .case-introduction h2 {max-width: none; margin-bottom: 9px; font-size: 28px}
+ .exhibition:not(.gesture-immersive) .artifact-pane {position: relative; height: clamp(335px,52vh,490px)}
+ .exhibition .catalog-handle {top: 15px; right: 0; letter-spacing: 0; padding: 4px}
+ .exhibition:not(.gesture-immersive) .artifact-pane .artifact-heading {top: 54px}
+ .exhibition .artifact-pane .identity h1 {font-size: 28px}
+ .exhibition .case-path {margin-top: 10px}
+ .exhibition:not(.gesture-immersive) .ritual-hud {gap: 5px 12px}
+ .exhibition:not(.gesture-immersive) .ritual-hud .ritual-form {margin: 0}
+ .exhibition-gesture-hint {white-space: normal; line-height: 1.7}
+ #exhibition-drawer {inset: 62px 12px 12px auto; width: min(420px,calc(100vw - 24px)); padding-inline: 17px}
+}
+@media (prefers-reduced-motion: reduce) {
+ #exhibition-drawer, #exhibition-drawer .case-letter, .gesture-lesson li.active .lesson-hand {animation: none}
+ .lesson-hand i {transition: none}
+}
+
+/* Fog, slate and metal are shared by the stage and the secondary views. */
+.exhibition #world-scenery,
+.arrival {
+ background: #30343a url('media/exhibition/fog-gallery.jpg') center / cover no-repeat;
+}
+.exhibition #world-scenery::before, .arrival::before {content: none}
+.exhibition:not([data-environment="mist"]) #background-film {opacity: 0}
+.exhibition[data-environment="exhibition"] .film-shade {
+ background: linear-gradient(90deg,#171b20aa,transparent 40%,transparent 63%,#181c21a3),
+  linear-gradient(0deg,#181c20e0,transparent 25%,transparent 85%,#171b2096);
+}
+.gallery-fog {
+ position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+}
+.gallery-fog::before, .gallery-fog::after {
+ content: ""; position: absolute; inset: 25% -24% -16%;
+ background: radial-gradient(ellipse at 29% 66%,#c6cbd32c 0,transparent 36%),
+             radial-gradient(ellipse at 70% 74%,#ddd5cb29 0,transparent 42%);
+ filter: blur(32px);
+ animation: gallery-drift 24s ease-in-out infinite alternate;
+}
+.gallery-fog::after {
+ inset: 37% -30% -25%; opacity: .56;
+ animation: gallery-drift 32s -14s ease-in-out infinite alternate-reverse;
+}
+.exhibition:not([data-environment="exhibition"]) .gallery-fog {display: none}
+@keyframes gallery-drift {to {transform: translate3d(9%,-5%,0) scale(1.12)}}
+.exhibition.gesture-immersive .film-shade, .exhibition.fool-preview .film-shade {
+ background: linear-gradient(90deg,#1218207d,transparent 73%),linear-gradient(0deg,#171c22b9,transparent 36%);
+}
+.exhibition #fool-veil {filter: saturate(.57) contrast(.97)}
+.exhibition .table-illustration > img {filter: saturate(.53) brightness(.87)}
+.exhibition .table-message, .exhibition .gesture-echo,
+.exhibition.gesture-immersive .catalog-preview,
+.exhibition.gesture-immersive .ritual-hud,
+.exhibition.gesture-immersive .header-actions button {
+ background: #272b31e8;
+ color: var(--ink);
+ border-color: #ccc3ad46;
+}
+.exhibition.gesture-immersive .relic.active,
+.exhibition .drawer-catalog .relic.active {background: #c7bda914}
+.exhibition .gesture-echo :is(.echo-title,strong,small) {color: var(--silver)}
+.exhibition .table-point:hover, .exhibition .table-point:focus-visible {background: #30343ae5}
+.exhibition #card-detail {background: #1f252de5}
+.exhibition #card-detail-close {color: var(--ink); background: #292d32; border-color: var(--line)}
+.exhibition #card-detail-name {color: var(--ink); font: 16px/1.5 var(--display)}
+.exhibition #card-detail-name small {color: var(--muted); font: 12px/1.55 var(--controls)}
+.exhibition .toast.show {background: #262b32ee; color: var(--ink)}
+.exhibition .case-negative {background: #d2cbc0; transform: none; box-shadow: none}
+.exhibition .case-negative img {filter: saturate(.55) contrast(1.03)}
+.exhibition .archive-marginalia {
+ background: #d2cbbf; transform: none; box-shadow: none;
+ border-left: 1px solid #746e62a6;
+}
+.exhibition .archive-marginalia::before {display: none}
+.exhibition #exhibition-drawer .control-column :is(.mirror-answer,.chapter-reading,.chapter-objective) {background: #d1cbbf; color: #343337}
+.exhibition #exhibition-drawer .control-column :is(.deepseek-settings a,.deepseek-settings summary) {color: #514638}
+.exhibition #exhibition-drawer .control-column :is(.deepseek-settings a,.deepseek-settings summary):hover {color: #242527; background: none}
+.exhibition #exhibition-drawer .control-column .chapter-primary {color: #333034; border: 1px solid #8176678f}
+.exhibition #exhibition-drawer .control-column :focus-visible {outline-color: #63574a}
+
+.metal-inscription {
+ position: relative;
+ border: 1px solid #c6ad7c9c;
+ background: #24272ca6;
+ color: #e5d2ac;
+ box-shadow: inset 0 0 0 3px #171a1e, inset 0 0 0 4px #bca5796e, 0 4px 20px #15191e66;
+}
+.metal-inscription::before, .metal-inscription::after {
+ content: ""; position: absolute; top: calc(50% - 4px); width: 7px; height: 7px;
+ border: 1px solid #bda678; background: #353337; transform: rotate(45deg);
+}
+.metal-inscription::before {left: -5px}
+.metal-inscription::after {right: -5px}
+.metal-inscription:focus-visible {outline: 1px solid #e7d5b3; outline-offset: 5px}
+.arrival .arrival-vignette {
+ background: radial-gradient(ellipse at 51% 45%,transparent 16%,#20242a36 59%,#14171bb5);
+}
+.arrival .arrival-fog {opacity: .18; filter: grayscale(1) contrast(1.3) brightness(.87)}
+.arrival .arrival-coin {
+ display: block; width: clamp(128px,16vw,205px); height: clamp(128px,16vw,205px);
+ object-fit: contain; opacity: 1; mix-blend-mode: normal; filter: drop-shadow(0 9px 19px #15181e9c);
+}
+.arrival .arrival-gate h1 {
+ font: 32px/1.2 var(--display); letter-spacing: .18em;
+ text-shadow: 0 2px 5px #1e2227,0 0 19px #222629ad;
+ margin: 15px 0 24px;
+}
+.arrival .arrival-enter {
+ min-width: 225px; min-height: 45px; padding: 9px 22px;
+ border: 1px solid #c6ad7c9c; font: 16px/1.6 var(--display); color: #e5d2ac;
+ background: #24272ca6;
+}
+.arrival .arrival-enter:hover:not(:disabled) {background: #3d3933; border-color: #c6ad7c}
+.arrival .arrival-disclaimer {margin-top: 18px}
+.arrival[data-phase="departing"] .arrival-fog {opacity: .23}
+.arrival-skip {color: var(--silver); border-bottom: 0}
+
+.exhibition :is(.catalog-preview,.drawer-catalog) .shell-toolbar {background: none; backdrop-filter: none}
+.exhibition .catalog-preview {padding: 0; border: 0; margin: 0}
+.exhibition #card-detail img {border-color: #bab5aa55; background: #272b30; box-shadow: 0 24px 60px #13171caa}
+.exhibition #card-detail[data-card="2"] img {border-color: #b49a64a6}
+.exhibition .catalog-preview .catalog-handle {position: static; padding: 5px 0; min-height: 32px; border: 0; letter-spacing: .06em}
+.exhibition .catalog-preview .catalog-handle:hover {border: 0; text-decoration: underline; text-underline-offset: 5px}
+.exhibition .catalog-preview .relics {display: none}
+.exhibition.gesture-immersive .catalog-preview .relics {display: flex}
+.exhibition.gesture-immersive .catalog-preview .catalog-handle,
+.exhibition.gesture-immersive .case-path,
+.exhibition.fool-preview .case-path {display: none}
+.exhibition .case-path {justify-content: center}
+.exhibition .case-begin.metal-inscription {
+ width: min(260px,100%); min-height: 46px; padding: 8px 20px;
+ background: #24272ce8; border: 1px solid #c6ad7c9c; font: 16px/1.5 var(--display);
+ color: #e5d2ac; letter-spacing: .20em;
+}
+.exhibition .case-begin.metal-inscription:hover:not(:disabled) {
+ background: #37342e !important; border-color: #d1b784; color: #f0dcb6;
+}
+.exhibition .relic-context {border: 0}
+.exhibition .ritual-hud .ritual-form select {border: 0}
+.exhibition .drawer-catalog .relic.active::after {border-radius: 50%; transform: none}
+.exhibition .drawer-settings details {border-color: #bfb9ae2e}
+
+#exhibition-drawer .case-letter {
+ position: relative; padding: 24px 70px 23px 23px; border: 0;
+ color: #343136;
+ background: radial-gradient(ellipse at 18% 10%,#eee7d9 0%,transparent 63%),#d6cfc0;
+ box-shadow: none;
+}
+#exhibition-drawer .case-letter .letter-line {
+ display: block; margin-block: 8px 11px; font: 16px/1.9 var(--display);
+ color: #2e2b30; letter-spacing: .03em;
+}
+.letter-seal {
+ position: absolute; right: 18px; top: 16px; width: 40px; height: 40px;
+ border-radius: 43% 48% 42% 47%; transform: rotate(-18deg);
+ background: radial-gradient(ellipse at 32% 18%,#646267,#302e35 40%,#232228 65%,#47464d);
+ box-shadow: inset 1px 1px 2px #8f8c8b,2px 3px 5px #211c2866;
+}
+.letter-seal::after {
+ content: ""; position: absolute; inset: 6px; border: 1px solid #8f8d8e88;
+ border-radius: 50%; background: linear-gradient(130deg,transparent 48%,#222128 49%,#222128 51%,#bcb9b54f 53%,transparent 55%);
+}
+#exhibition-drawer[data-unsealing] .letter-seal {animation: break-seal .72s ease-out both}
+@keyframes break-seal {0% {transform: rotate(-8deg) scale(1.1); opacity: .58} 70% {transform: rotate(-19deg) scale(1)}}
+
+@media (min-width: 761px) {
+ .exhibition:not(.gesture-immersive):not(.fool-preview) .experience {padding-top: 18px}
+ .exhibition:not(.gesture-immersive):not(.fool-preview) .experience > header {padding-bottom: 10px; border-bottom-color: #c9c2b52b}
+ .exhibition .masthead-note {margin: 0 2px 0 auto; letter-spacing: .14em}
+ .exhibition:not(.gesture-immersive):not(.fool-preview) .artifact-pane .render-stage {inset: 0 0 99px; height: auto}
+ .exhibition:not(.gesture-immersive):not(.fool-preview) .artifact-pane .artifact-heading {inset: auto 0 107px; text-shadow: 0 2px 9px #13171c}
+ .exhibition:not(.gesture-immersive):not(.fool-preview) .artifact-pane .stage-caption {inset: auto 0 82px}
+ .exhibition .artifact-pane .identity h1 {font-size: 28px; letter-spacing: .115em}
+ .exhibition .case-introduction {top: 20%; transform: none; width: 28vw}
+ .exhibition .case-introduction h2 {max-width: none; white-space: nowrap; margin-bottom: 23px; font-size: clamp(24px,2.4vw,32px)}
+ .exhibition .relic-context {max-width: 200px; padding: 0}
+ .exhibition .relic-context h3 {color: #ded7c9; margin-bottom: 7px}
+ .exhibition .case-path {
+  position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%); z-index: 2;
+  flex-direction: column; align-items: center; gap: 1px; margin-top: 0; width: 268px;
+ }
+ .exhibition .case-free {min-height: 29px}
+ .exhibition:not(.gesture-immersive):not(.fool-preview) .catalog-preview {
+  position: absolute; z-index: 2; top: 44%; right: 0; width: 177px; transform: translateY(-36%); text-align: center;
+ }
+ .exhibition:not(.gesture-immersive) .catalog-preview .relics {display: flex; flex-direction: column; gap: 0; padding: 0; background: none}
+ .exhibition:not(.gesture-immersive) .catalog-preview .relic {
+  flex: none; width: 100%; min-height: 55px; padding: 6px 3px;
+  align-items: center; justify-content: center; background: none; border: 0;
+ }
+ .exhibition:not(.gesture-immersive) .catalog-preview .relic:not(:last-child)::before {
+  content: ""; position: absolute; bottom: 0; left: 30%; right: 30%; height: 1px; background: #d2cdc337;
+ }
+ .exhibition:not(.gesture-immersive) .catalog-preview .relic b {
+  font: 16px/1.5 var(--display); letter-spacing: .09em; color: #c7c3b9; white-space: nowrap;
+ }
+ .exhibition:not(.gesture-immersive) .catalog-preview .relic.active b,
+ .exhibition:not(.gesture-immersive) .catalog-preview .relic:hover b {color: #f1e8d8}
+ .exhibition:not(.gesture-immersive) .catalog-preview .relic small,
+ .exhibition:not(.gesture-immersive) .catalog-preview .relic::after {display: none}
+ .exhibition .catalog-preview .catalog-handle {margin-top: 8px; color: #bab6ad; font-size: 12px}
+ .exhibition .ritual-hud {border-top-color: #c8c0b241}
+ .exhibition.reading-letter .case-introduction,
+ .exhibition.reading-letter .catalog-preview,
+ .exhibition.reading-letter .case-path,
+ .exhibition.reading-letter .artifact-heading,
+ .exhibition.reading-letter .stage-caption,
+ .exhibition.reading-letter .ritual-hud {visibility: hidden}
+ .exhibition.reading-letter .artifact-pane {transform: translateX(-21vw)}
+ .exhibition:not(.gesture-immersive):not(.fool-preview) .artifact-pane {
+  transition: transform .66s cubic-bezier(.25,.7,.25,1);
+ }
+ .exhibition.reading-letter #exhibition-drawer {
+  inset: 13% 9vw auto auto; width: min(440px,40vw); max-height: 78svh;
+  padding: 20px 34px 32px; background: transparent;
+  border: 0; box-shadow: none; isolation: isolate; filter: drop-shadow(-5px 10px 18px #111419a8);
+ }
+ .exhibition.reading-letter #exhibition-drawer .drawer-top {border-color: #695f4e60; background: transparent; justify-content: end}
+ .exhibition.reading-letter #exhibition-drawer::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(ellipse at 33% 37%,#e8e2d7,#d7cfc0 73%,#bcb3a5);
+  clip-path: polygon(1% 1%,14% 1.6%,23% .5%,38% 1.5%,56% .3%,68% 1.1%,82% .3%,99% 1.3%,98.3% 18%,99.6% 29%,98.8% 46%,99.7% 61%,98.6% 79%,99.7% 96%,97.6% 99%,86% 98.4%,70% 99.8%,62% 98.2%,49% 99.5%,30% 98.3%,20% 99.8%,6% 98.1%,.8% 98.8%,1.6% 81%,.2% 68%,1.2% 57%,.3% 39%,1.4% 23%);
+ }
+ .exhibition.reading-letter #exhibition-drawer .case-letter {background: #bcb1a31a; border-block: 1px solid #675b4530}
+ .exhibition.reading-letter #exhibition-drawer .drawer-top nav,
+ .exhibition.reading-letter #exhibition-drawer :is(.chapter-bar,.story,.archive-marginalia,.case-negative,.mirror-input,.chapter-panel > small) {display: none}
+}
+@media (max-width: 760px) {
+ .exhibition:not(.gesture-immersive) .catalog-preview {position: absolute; top: 15px; right: 0; z-index: 2}
+}
+@media (prefers-reduced-motion: reduce) {
+ .gallery-fog::before, .gallery-fog::after, #exhibition-drawer .letter-seal {animation: none}
+ .exhibition .artifact-pane {transition: none !important}
+}
+
+/* Keep the input visible so a camera connection can be checked before a hand is found. */
+.exhibition.gesture-immersive .gesture-echo:has(.cam-box:not([hidden])) {display: block}
+.exhibition .gesture-echo {width: clamp(145px,16vw,205px); padding: 9px 10px}
+.exhibition .gesture-echo .cam-box {
+ position: relative; width: 100%; margin: 7px 0; aspect-ratio: 4 / 3;
+ border-radius: 0; overflow: hidden; background: #1c2024;
+}
+.exhibition .gesture-echo .cam-box video {display: block; object-fit: contain}
+.exhibition .gesture-echo .cam-box canvas {position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none}
+.exhibition .gesture-echo .cam-box small {
+ position: absolute; z-index: 1; left: 5px; bottom: 4px; margin: 0; padding: 1px 4px;
+ font-size: 10px; background: #23282dc9; color: var(--ink);
+}
+.exhibition .gesture-echo .camera-device {
+ display: flex; align-items: center; gap: 6px; min-width: 0; margin: 7px 0 0;
+ color: var(--muted); font-size: 12px; pointer-events: auto;
+}
+.exhibition .gesture-echo .camera-device select {
+ flex: 1; min-width: 0; min-height: 30px; padding: 3px 0;
+ border-bottom: 1px solid var(--line);
+}

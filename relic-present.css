@@ -1,0 +1,358 @@
+/* 观景室：图绘遗物呈现与悬停淡光。
+   只服务 .viewing-room / .exhibit-spot / .exhibit-feature，不改主界面或 3D 秘仪。
+   色值按美术交接：阿罗德斯 #c8d0d8，灵摆 #d4a24a，亵渎之牌 #8a6d3b，笔记 #c4b8a0。 */
+
+:root {
+  --exhibit-glow-arodes: #c8d0d8;
+  --exhibit-glow-pendulum: #d4a24a;
+  --exhibit-glow-cards: #8a6d3b;
+  --exhibit-glow-notes: #c4b8a0;
+  --exhibit-ink: #d6d0c6;
+  --exhibit-ink-dim: #a8a298;
+  --exhibit-ease: cubic-bezier(0.22, 0.12, 0.24, 1);
+}
+
+.viewing-room {
+  position: relative;
+  width: min(100%, 1280px);
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #0a0a0c;
+  isolation: isolate;
+}
+
+.viewing-room__hall,
+.viewing-room__mood {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viewing-room__mood {
+  opacity: 0;
+  transition: opacity 0.9s var(--exhibit-ease);
+  z-index: 1;
+}
+
+.viewing-room.is-featuring[data-open-relic="arodes"] .viewing-room__mood[data-relic="arodes"],
+.viewing-room.is-featuring[data-open-relic="pendulum"] .viewing-room__mood[data-relic="pendulum"],
+.viewing-room.is-featuring[data-open-relic="cards"] .viewing-room__mood[data-relic="cards"],
+.viewing-room.is-featuring[data-open-relic="notes"] .viewing-room__mood[data-relic="notes"] {
+  opacity: 1;
+}
+
+/* 展位本身不抢布局：智谱的 viewing-room-layout.css 负责摆位。
+   仅预览大厅 .viewing-room--hall 使用下方默认坐标。 */
+.exhibit-spot {
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.viewing-room--hall .exhibit-spot {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: var(--w, 20%);
+  height: var(--h, 30%);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.viewing-room--hall .exhibit-spot[data-relic="arodes"] { --x: 19.5%; --y: 48%; --w: 25%; --h: 70%; z-index: 2; }
+.viewing-room--hall .exhibit-spot[data-relic="pendulum"] { --x: 50%; --y: 31%; --w: 12.5%; --h: 80%; z-index: 3; }
+.viewing-room--hall .exhibit-spot[data-relic="cards"] { --x: 60%; --y: 80%; --w: 28%; --h: 26%; z-index: 4; }
+.viewing-room--hall .exhibit-spot[data-relic="notes"] { --x: 80.5%; --y: 60%; --w: 20%; --h: 44%; z-index: 3; }
+
+.exhibit-glow {
+  position: absolute;
+  inset: -22%;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  background: none;
+  mix-blend-mode: screen;
+  transform: scale(0.92);
+  transition:
+    opacity 0.85s var(--exhibit-ease),
+    transform 1s var(--exhibit-ease);
+  z-index: 0;
+}
+
+.exhibit-spot[data-relic="arodes"] .exhibit-glow {
+  /* #c8d0d8 */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(200, 208, 216, 0.46) 0%,
+    rgba(200, 208, 216, 0.16) 46%,
+    transparent 74%
+  );
+}
+
+.exhibit-spot[data-relic="pendulum"] .exhibit-glow {
+  /* #d4a24a */
+  inset: -12% -28%;
+  background: radial-gradient(
+    ellipse at 50% 62%,
+    rgba(212, 162, 74, 0.52) 0%,
+    rgba(212, 162, 74, 0.18) 44%,
+    transparent 74%
+  );
+}
+
+.exhibit-spot[data-relic="cards"] .exhibit-glow {
+  /* #8a6d3b，暗金只加强在靠前的那张牌（扇面中央） */
+  inset: -16% -8%;
+  background: radial-gradient(
+    ellipse at 50% 46%,
+    rgba(138, 109, 59, 0.55) 0%,
+    rgba(138, 109, 59, 0.18) 36%,
+    rgba(138, 109, 59, 0.08) 58%,
+    transparent 74%
+  );
+}
+
+.exhibit-spot[data-relic="notes"] .exhibit-glow {
+  /* #c4b8a0 冷象牙 / 旧纸，独立色，不与其他遗物共用 */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(196, 184, 160, 0.44) 0%,
+    rgba(196, 184, 160, 0.16) 46%,
+    transparent 74%
+  );
+}
+
+.exhibit-spot:hover .exhibit-glow,
+.exhibit-spot:focus-visible .exhibit-glow,
+.exhibit-spot.is-lit .exhibit-glow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.exhibit-spot:focus,
+.exhibit-spot:focus-visible {
+  outline: none;
+}
+
+.exhibit-art {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 0 0 transparent);
+  transition: filter 0.85s var(--exhibit-ease), opacity 0.8s var(--exhibit-ease);
+}
+
+.exhibit-spot[data-relic="arodes"]:hover .exhibit-art,
+.exhibit-spot[data-relic="arodes"]:focus-visible .exhibit-art,
+.exhibit-spot[data-relic="arodes"].is-lit .exhibit-art {
+  filter:
+    drop-shadow(0 0 16px rgba(200, 208, 216, 0.40))
+    drop-shadow(0 0 40px rgba(200, 208, 216, 0.18));
+}
+
+.exhibit-spot[data-relic="pendulum"]:hover .exhibit-art,
+.exhibit-spot[data-relic="pendulum"]:focus-visible .exhibit-art,
+.exhibit-spot[data-relic="pendulum"].is-lit .exhibit-art {
+  filter:
+    drop-shadow(0 0 16px rgba(212, 162, 74, 0.48))
+    drop-shadow(0 0 40px rgba(212, 162, 74, 0.20));
+}
+
+.exhibit-spot[data-relic="cards"]:hover .exhibit-art,
+.exhibit-spot[data-relic="cards"]:focus-visible .exhibit-art,
+.exhibit-spot[data-relic="cards"].is-lit .exhibit-art {
+  filter:
+    drop-shadow(0 0 16px rgba(138, 109, 59, 0.44))
+    drop-shadow(0 0 36px rgba(138, 109, 59, 0.18));
+}
+
+.exhibit-spot[data-relic="notes"]:hover .exhibit-art,
+.exhibit-spot[data-relic="notes"]:focus-visible .exhibit-art,
+.exhibit-spot[data-relic="notes"].is-lit .exhibit-art {
+  filter:
+    drop-shadow(0 0 16px rgba(196, 184, 160, 0.40))
+    drop-shadow(0 0 36px rgba(196, 184, 160, 0.16));
+}
+
+/* 悬停只起淡光，不出现标题。标题仅在选中态由 .exhibit-caption 写出。 */
+.exhibit-label {
+  display: none;
+}
+
+.exhibit-feature {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  background: #0a0a0c;
+  z-index: 5;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.9s var(--exhibit-ease),
+    visibility 0.9s var(--exhibit-ease);
+}
+
+.exhibit-feature.is-open,
+.exhibit-feature[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.exhibit-feature img,
+.exhibit-feature__mood,
+.exhibit-feature__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.exhibit-feature__art {
+  object-fit: contain;
+  object-position: center 42%;
+  width: auto;
+  height: 64%;
+  left: 50%;
+  top: 44%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45));
+}
+
+.exhibit-feature[data-relic="cards"] .exhibit-feature__art {
+  height: 52%;
+  width: 72%;
+  object-fit: contain;
+}
+
+.exhibit-feature[data-relic="pendulum"] .exhibit-feature__art,
+.exhibit-feature[data-relic="arodes"] .exhibit-feature__art,
+.exhibit-feature[data-relic="notes"] .exhibit-feature__art {
+  /* 选中气氛图已含遗物，不再叠一张切图 */
+  display: none;
+}
+
+.exhibit-feature__veil {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(8, 8, 10, 0.72) 40%,
+    rgba(8, 8, 10, 0.9) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.exhibit-caption,
+.exhibit-footer,
+.viewing-room__footer {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: center;
+  color: var(--exhibit-ink);
+  font-family: "Noto Serif CJK SC", "Songti SC", "Source Han Serif SC", "Noto Serif SC", serif;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.exhibit-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 11%;
+  font-size: clamp(16px, 2.1vw, 24px);
+  letter-spacing: 0.28em;
+  text-shadow: 0 0 18px rgba(0, 0, 0, 0.85);
+}
+
+.exhibit-footer,
+.viewing-room__footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4.5%;
+  color: var(--exhibit-ink-dim);
+  font-size: clamp(11px, 1.15vw, 14px);
+  letter-spacing: 0.32em;
+  opacity: 0.7;
+  text-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+}
+
+.viewing-room__footer {
+  z-index: 2;
+  transition: opacity 0.8s var(--exhibit-ease);
+}
+
+.viewing-room.is-featuring .viewing-room__footer {
+  opacity: 0;
+}
+
+.exhibit-back {
+  position: absolute;
+  top: 4.5%;
+  left: 4%;
+  z-index: 6;
+  border: 0;
+  background: transparent;
+  color: var(--exhibit-ink-dim);
+  font-family: "Noto Serif CJK SC", "Songti SC", "Source Han Serif SC", "Noto Serif SC", serif;
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s var(--exhibit-ease), color 0.8s var(--exhibit-ease);
+}
+
+.exhibit-feature.is-open ~ .exhibit-back,
+.viewing-room.is-featuring .exhibit-back {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.exhibit-back:hover,
+.exhibit-back:focus-visible {
+  color: var(--exhibit-ink);
+}
+
+/* 选中时大厅切图让出气氛图 */
+.viewing-room--hall.is-featuring .exhibit-spot {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* 选中态：隐藏其余展位，避免叠在选中件上。
+   智谱 layout 里对应规则写成了 `.hall[data-view="focus"] .hall > .exhibit-spot`，
+   页面没有嵌套的 .hall，那条选择器不会生效。选中件的显示与居中仍由 layout 负责。 */
+.hall[data-view="focus"] > .exhibit-spot {
+  opacity: 0;
+  pointer-events: none;
+}

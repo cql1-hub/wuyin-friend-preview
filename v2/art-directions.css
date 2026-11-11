@@ -1,0 +1,29 @@
+.art-field{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#world{z-index:1}#failure{z-index:2}.mirror-signal{position:absolute;left:50%;top:50%;z-index:3;transform:translate(-50%,-50%);margin:0;pointer-events:none;opacity:0;color:#c9dfd2;font:clamp(7px,1vw,12px)/1.05 monospace;letter-spacing:.16em;text-align:center;text-shadow:0 0 8px #a8d7c388;mix-blend-mode:screen;white-space:pre}
+.pixel-signal{position:absolute;left:50%;top:50%;z-index:2;width:224px;height:168px;transform:translate(-50%,-50%);image-rendering:pixelated;pointer-events:none;opacity:0;mix-blend-mode:screen}
+.mirror-signal.visible,.pixel-signal.visible{animation:mirror-interference 1.4s ease-out both}
+@keyframes mirror-interference{0%{opacity:0;filter:blur(3px)}15%{opacity:.48;filter:blur(0)}55%{opacity:.28}100%{opacity:0;filter:blur(1px)}}
+.folio-ui .control-column{background:#e9dec3;color:#283b30}
+.folio-ui .control-column .archive-close{background:#e9dec3}
+.folio-ui .control-column .case-letter{background:#f4ead1;padding:15px 18px;border-left:2px solid #a3885d;box-shadow:0 4px 12px #4a3b2112}
+.archive-marginalia{position:relative;margin:5px 0 25px;padding:14px 17px 15px;background:#f3e9d0;color:#3c5140;transform:rotate(-1deg);box-shadow:0 3px 12px #4c3b2514}
+.archive-marginalia::before{content:'';position:absolute;top:-4px;left:42%;width:35px;height:9px;background:#af9b6a66;transform:rotate(4deg)}
+.folio-ui .control-column .archive-marginalia span{font-size:10px;color:#68735a}.folio-ui .control-column .archive-marginalia p{margin:5px 0;font:17px/1.8 KaiTi,'Veil Serif',serif;color:#354e3d}.folio-ui .control-column .archive-marginalia small{font:13px/1.6 KaiTi,serif;color:#677158}
+.case-negative{margin:0 0 28px;padding:10px 10px 8px;background:#f7efd9;box-shadow:0 4px 16px #3c301b22;transform:rotate(.7deg)}
+.case-negative>div{position:relative;overflow:hidden;background:#252d23}.case-negative>div::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,transparent 38%,#150f0a88 100%);pointer-events:none}
+.case-negative img{display:block;width:100%;aspect-ratio:1.7;object-fit:cover;filter:sepia(.2) saturate(.72) contrast(1.08)}
+.folio-ui .control-column .case-negative figcaption{display:flex;justify-content:space-between;gap:8px;padding:10px 2px 2px;color:#314639;font:14px/1.5 'Veil Serif',serif}.folio-ui .control-column .case-negative figcaption span{font:10px/1.6 'Microsoft YaHei',sans-serif;color:#66745c;text-align:right}
+@media(max-width:700px){.mirror-signal{font-size:7px}.archive-marginalia{margin-bottom:22px}}
+@media(prefers-reduced-motion:reduce){.mirror-signal.visible,.pixel-signal.visible{animation:none;opacity:.2}}
+.folio-ui .mirror-connection{margin:14px 0 16px;padding:14px 0;border-top:1px solid #91836266;border-bottom:1px solid #91836266}
+.folio-ui .control-column .mirror-mode-label{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:#344c3d}
+.folio-ui .control-column .mirror-mode-label select{width:auto;max-width:70%;margin:0;padding:8px 10px;font-size:12px}
+.folio-ui .control-column .deepseek-settings{margin:12px 0 0;padding:0;border:0}
+.folio-ui .control-column .deepseek-settings summary{font-size:12px;line-height:1.6;min-height:0;padding:6px 0;color:#285443;cursor:pointer}
+.folio-ui .control-column .deepseek-settings summary:hover{background:#d6caa9;color:#183d2c}
+.folio-ui .control-column .deepseek-settings>label{display:block;margin:12px 0 6px;font-size:12px}
+.folio-ui .control-column .deepseek-settings input{display:block;width:100%;padding:10px 12px;font-size:13px}
+.folio-ui .control-column .deepseek-actions{display:flex;gap:8px;margin-top:10px}
+.folio-ui .control-column .deepseek-actions button{min-height:40px}.folio-ui .control-column .deepseek-actions .save-key{background:#254535;color:#f3e8ce}
+.folio-ui .control-column .deepseek-settings p{margin:9px 0;font-size:11px;line-height:1.7;color:#445c49}.folio-ui .control-column .deepseek-settings a{font-size:11px;color:#285443;text-underline-offset:3px}
+.folio-ui .control-column .mirror-answer{margin:14px 0;padding:14px 16px;background:#f3e9d0;color:#294332;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.85}

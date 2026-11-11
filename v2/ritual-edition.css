@@ -1,0 +1,151 @@
+@font-face{font-family:Veil Serif;src:url('media/type/NotoSerifSC-sub.woff') format('woff');font-display:swap}
+:root{--ink:#e8e1cf;--muted:#b4b5a4;--line:#bcaa7938;--paper:#e8d9b4;--engraved-gold:#c2a86f;color:var(--ink);background:#101a1a;color-scheme:dark}
+body{background:transparent}::selection{background:#c2a86f;color:#111e1d}
+button,select{border-radius:2px;color:var(--ink);border-color:var(--line);background:#142322}
+button:hover:not(:disabled),summary:hover{background:#26382f;border-color:#c2a86f}
+button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #dec58a;outline-offset:4px}
+input,textarea{caret-color:var(--paper)}button,summary,select{touch-action:manipulation}
+.folio-ui .experience{max-width:1800px;padding:28px 44px 20px;margin:auto}
+.folio-ui header{min-height:54px;margin:0;padding:0 0 23px;gap:28px;border-bottom:1px solid var(--line)}
+.folio-ui .brand svg{color:var(--engraved-gold);width:35px;height:40px}
+.folio-ui .brand>span{font:28px/1.25 'Veil Serif',SimSun,serif;letter-spacing:.12em;color:var(--paper)}
+.folio-ui .brand small{font:10px/1.5 'Microsoft YaHei',sans-serif;color:var(--muted);letter-spacing:.16em}
+.masthead-note{margin:0 auto 0 32px;color:#c0c3b3;font:13px/1.8 'Veil Serif',SimSun,serif}
+.folio-ui .header-actions{gap:8px;align-items:center;flex-wrap:nowrap;max-width:none}
+.folio-ui .header-actions button,.folio-ui .environment-settings>summary{min-height:40px;padding:9px 12px;font-size:11px;background:transparent;border:1px solid transparent;border-radius:2px;color:#d5d7c7;white-space:nowrap}
+.folio-ui .header-actions #tools-toggle{display:block;border-color:#b5a57666;color:#e6d5ad;background:#172521}
+.environment-settings{position:relative;order:5}.environment-settings>summary{list-style:none;cursor:pointer}
+.environment-settings>summary::-webkit-details-marker{display:none}
+.environment-settings>summary::after{content:'';display:inline-block;width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin:0 2px 3px 10px}
+.environment-settings[open]>summary{border-color:#b5a57666;background:#172521}
+.environment-menu{position:absolute;right:0;top:calc(100% + 12px);z-index:80;width:350px;max-height:calc(100svh - 120px);overflow:auto;padding:22px;display:flex;gap:8px;flex-wrap:wrap;background:#132221;box-shadow:0 16px 45px #020c0b99}
+.folio-ui .environment-menu button{border:1px solid var(--line);min-height:40px}
+.environment-menu .scene-controls,.environment-menu .audio-controls{position:static;margin:12px 0;padding:0;width:100%;gap:10px;font-size:12px}
+.environment-menu .scene-controls label{display:grid;gap:9px;width:100%}.environment-menu select{width:100%;max-width:none;min-height:40px;font-size:12px}
+.environment-menu #scene-status{font-size:11px;color:var(--muted)}.environment-menu #scene-focus,.environment-menu .audio-controls a{display:none}
+.environment-menu .glass-adjust{padding-top:15px;border-top:1px solid var(--line);width:100%}
+.folio-ui .film-shade{background:linear-gradient(90deg,#0c1919f2 0%,#0c1919d4 22%,#0c19192b 56%,#0c1919d9 100%)}
+.folio-ui .glass-shell{background:none;border:0;border-radius:0;box-shadow:none;overflow:visible;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.folio-ui .workspace,.folio-ui.tools-collapsed .workspace{display:grid;grid-template-columns:270px minmax(0,1fr) 190px;gap:20px;position:relative;min-height:580px;align-items:stretch}
+.case-introduction{align-self:center;padding:26px 0 35px;position:relative;z-index:2}
+.case-introduction h2{font:400 clamp(36px,3.6vw,54px)/1.45 'Veil Serif',SimSun,serif;color:#f0e3c8;max-width:5.5em;margin:0 0 21px;letter-spacing:.03em;text-wrap:balance}
+.case-premise{font-size:12px;line-height:2.1;color:#c0c4b7;margin:0 0 28px}
+.invitation{position:relative;margin:0 0 26px;padding:22px 0 0;border-top:1px solid var(--line);max-width:225px}
+.invitation svg{width:32px;height:23px;color:#bcaa7b;margin-bottom:8px}.invitation p{font:14px/2.15 'Veil Serif',SimSun,serif;color:#dcd2b9;margin:0}
+.invitation cite{display:block;font-style:normal;font-size:10px;color:#adb5a6;margin-top:13px}
+.case-begin{display:flex;align-items:center;justify-content:space-between;width:220px;min-height:48px;padding:12px 17px;background:#c2aa75;color:#10211e;border:0;font-size:13px;font-weight:600}
+.case-begin svg{width:20px;height:20px}.case-begin:hover{background:#e2c994!important;color:#10211e}
+.case-save{font-size:10px;color:#acb7a8;margin:12px 0 20px}.case-free{background:none;border:0;border-bottom:1px solid #c0b18a55;min-height:32px;padding:0;font-size:11px;color:#c1c8b8}
+.folio-ui .artifact-pane{display:flex;flex-direction:column;position:relative;min-width:0;background:none}
+.folio-ui .artifact-heading,.folio-ui .artifact-pane.domain-open .artifact-heading{position:relative;inset:auto;padding:27px 0 0;display:flex;align-items:center;gap:12px;z-index:2}
+.folio-ui .identity p{display:none}.folio-ui .identity h1{font:22px/1.5 'Veil Serif',SimSun,serif;color:#e0d5b9;letter-spacing:.06em}
+.folio-ui .object-tag{margin-left:auto;font-size:10px;color:#bdc1ad;background:none;padding:0}
+.folio-ui .render-stage,.folio-ui.tools-collapsed .render-stage,.folio-ui .artifact-pane.domain-open .render-stage{position:relative;inset:auto;flex:1;height:510px;min-height:430px;max-height:680px}
+.folio-ui .artifact-pane.domain-open{overflow:visible}
+.folio-ui .stage-caption{padding:0 0 23px;display:flex;flex-direction:column;align-items:center;gap:8px;border:0;position:relative;z-index:2;text-align:center}
+.folio-ui .stage-caption #phase{font:13px/1.6 'Veil Serif',SimSun,serif;color:#d6c59b}.folio-ui .stage-caption span:last-child{font-size:10px;color:#c0c6b8}
+.collection-index{align-self:center;padding:26px 0 30px 18px;border-left:1px solid var(--line)}
+.collection-index h2{font:18px/1.7 'Veil Serif',SimSun,serif;margin:0 0 7px;color:#e1d4b7}.collection-index>p{font-size:10px;line-height:1.8;color:#abb8a9;margin:0 0 26px}
+.folio-ui .shell-toolbar{border:0;padding:0;display:block;max-width:none;margin:0}
+.folio-ui .shell-toolbar .relics{display:flex;flex-direction:column;gap:0;padding:0;width:100%;background:none;border:0}
+.folio-ui .relic{width:100%;flex:none;display:flex;align-items:flex-start;justify-content:center;flex-direction:column;gap:7px;position:relative;padding:20px 8px 20px 17px;min-height:87px;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;transition:background .2s}
+.folio-ui .relic b{font:16px/1.5 'Veil Serif',SimSun,serif;color:#bdc3b2}.folio-ui .relic small{display:block;font-size:10px;color:#a8b6a5}
+.folio-ui .relic.active{background:#c3aa7512;box-shadow:none;border-bottom-color:var(--line)}.folio-ui .relic.active b{color:#eddbb4}.folio-ui .relic.active small{color:#d2c29c}
+.folio-ui .relic.active::after{content:'';position:absolute;width:5px;height:5px;left:0;top:29px;background:#c8ac70;border:0;border-radius:0;transform:rotate(45deg);box-shadow:none}
+.folio-ui .chapter-feedback{margin:0;padding:11px 0;min-height:0;border:0;border-top:1px solid var(--line);background:none;display:flex;gap:12px;align-items:center;color:#bec6b4;font-size:11px}
+.folio-ui .chapter-feedback strong{font-weight:400}.folio-ui .chapter-feedback>strong::before{content:none}.folio-ui .chapter-feedback span{font-size:10px;color:#a4b2a2}
+.folio-ui .ritual-hud{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:12px;padding:19px 22px;margin:0;border:1px solid var(--line);background:#102320c9;min-height:80px}
+.folio-ui .ritual-readout{margin-right:auto;flex:1 1 230px;max-width:360px}.folio-ui .ritual-readout>strong{font:15px/1.6 'Veil Serif',SimSun,serif;color:#e1d3ad}
+.folio-ui .ritual-readout>span{font-size:11px;line-height:1.8;color:#b9c3b0}.folio-ui .ritual-chain,.folio-ui .ritual-hud>.relic-source,.folio-ui .ritual-hud>progress{display:none}
+.folio-ui .ritual-form{font-size:10px;color:#bcc5b3;gap:6px}.folio-ui .ritual-form select{font-size:12px;min-height:40px;max-width:190px;background:#132925;border-color:#b4a57955;border-radius:2px}
+.folio-ui .ritual-hud button{min-height:40px;font-size:11px;border-radius:2px;background:transparent;padding:9px 14px}
+.folio-ui .ritual-hud .effect-demo{background:#c2aa75;color:#10211e;border-color:transparent;min-width:110px;font-weight:600}.folio-ui .ritual-hud .effect-demo:hover{background:#dfc590}
+.folio-ui footer{display:flex;justify-content:flex-end;min-height:46px;border:0;background:none;padding:10px 0;gap:0}.folio-ui footer .status-block,.folio-ui #awaken{display:none}.folio-ui footer label{font-size:10px;color:#b9c2af;gap:12px}.folio-ui footer input{accent-color:#c2aa75;height:24px;width:140px}.folio-ui footer output{font-size:10px}
+.relic-context{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:29px 0 25px;border-top:1px solid var(--line)}
+.relic-context h2{font:20px/1.6 'Veil Serif',SimSun,serif;color:#ded2b7;margin:0 0 8px}.relic-context div p{font-size:12px;color:#b9c3b2;line-height:1.9;max-width:60ch;margin:0}.context-thought{font:16px/1.9 'Veil Serif',SimSun,serif;color:#c9b789;max-width:14em;margin:0;flex-shrink:0}
+.exploration-keys{display:flex;gap:27px;color:#a6b5a3;font-size:10px;padding:0 0 23px}.exploration-keys span{display:flex;gap:8px;align-items:center}.exploration-keys svg{width:18px;height:18px;color:#bda97b}
+.folio-ui .page-note{font-size:10px;line-height:1.8;text-align:left;margin:0;padding-top:15px;border-top:1px solid var(--line);color:#98ab99}
+.folio-ui .control-column{position:fixed;top:100px;bottom:24px;right:24px;width:410px;max-height:none;padding:22px 28px;z-index:85;border:0;border-radius:3px;background:#e3d8ba;color:#25372e;box-shadow:-24px 12px 80px #020b0a88;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#8e7953 #e3d8ba}
+.folio-ui.tools-collapsed .control-column{display:none}.folio-ui .control-column *{text-shadow:none}
+.folio-ui .control-column h2,.folio-ui .control-column h3,.folio-ui .control-column h4{color:#203a30;font-family:'Veil Serif',SimSun,serif}
+.folio-ui .control-column p,.folio-ui .control-column small,.folio-ui .control-column label,.folio-ui .control-column summary,.folio-ui .control-column strong,.folio-ui .control-column span,.folio-ui .control-column #guide p{color:#344c3d}
+.folio-ui .control-column p{font-size:13px;line-height:1.95}.folio-ui .control-column small{font-size:11px;line-height:1.85}
+.folio-ui .control-column button,.folio-ui .control-column select{min-height:40px;font-size:12px;background:#d1c5a4;border-color:#8c805455;color:#223c2e;border-radius:2px}
+.folio-ui .control-column input,.folio-ui .control-column textarea{background:#f1e7cc;border-color:#8c805466;color:#20382d;border-radius:2px}
+.folio-ui .control-column input::placeholder{color:#56694f}
+.folio-ui .control-column :focus-visible{outline-color:#254535}
+.folio-ui .control-column .chapter-primary{background:#254535;color:#f3e8ce;border:0}.folio-ui .control-column .chapter-bar{background:none;border:0;padding:0;display:block;margin:0 0 24px}.folio-ui .control-column .chapter-mode{margin-top:15px}
+.folio-ui .control-column .case-letter{background:none;border-left:1px solid #8a784d;padding:3px 0 3px 18px;color:#294332;font:18px/1.9 'Veil Serif',SimSun,serif}
+.folio-ui .control-column .chapter-reading{background:#d6c9a9;color:#25432e;font-size:13px}.folio-ui .control-column .chapter-objective{background:#d1c6a5;border-color:#9b8a61}
+.folio-ui .control-column details{border-color:#91836266}.folio-ui .control-column .archive-close{position:sticky;top:0;background:#e3d8ba;z-index:4;min-height:38px;margin-bottom:25px;font-size:11px}
+.folio-ui #object-description{color:#344c3d}.folio-ui .control-column #guide{border-top-color:#91836266}
+.folio-ui .toast:not(.show){display:none}.folio-ui .toast.show{width:max-content;max-width:calc(100vw - 32px);font-size:12px;line-height:1.8}
+#fool-veil{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.3s ease;mask-image:linear-gradient(transparent,black 12%,black 70%,transparent 98%)}#fool-veil.avatar-active{opacity:.86}.fool-canvas{display:block;width:100%;height:100%}.fool-preview #fool-veil.avatar-active{opacity:1}
+@media(min-width:1500px){.folio-ui .workspace,.folio-ui.tools-collapsed .workspace{grid-template-columns:310px minmax(0,1fr) 220px;min-height:650px}.case-introduction h2{font-size:58px}.folio-ui .render-stage{height:560px}.collection-index{padding-left:25px}}
+@media(max-width:1100px){.folio-ui .experience{padding:24px}.folio-ui .workspace,.folio-ui.tools-collapsed .workspace{grid-template-columns:220px minmax(0,1fr);gap:16px;min-height:520px}.collection-index{grid-column:1/-1;padding:0;border:0}.collection-index h2,.collection-index>p{display:none}.folio-ui .shell-toolbar .relics{flex-direction:row}.folio-ui .relic{align-items:center;padding:16px 6px;min-height:75px}.folio-ui .relic.active::after{left:calc(50% - 3px);top:auto;bottom:5px}.folio-ui .render-stage,.folio-ui.tools-collapsed .render-stage,.folio-ui .artifact-pane.domain-open .render-stage{min-height:380px;height:450px}.case-introduction h2{font-size:40px}.masthead-note{display:none}.folio-ui .ritual-readout{max-width:none}.folio-ui .ritual-hud{justify-content:flex-start}.folio-ui .ritual-form{margin-left:auto}.folio-ui .object-tag{display:none}}
+@media(max-width:700px){
+ .folio-ui .experience{padding:20px 18px 18px}.folio-ui header{padding-bottom:18px;gap:16px;flex-wrap:wrap;align-items:center}.folio-ui .brand>span{font-size:25px}.folio-ui .brand small{display:none}.folio-ui .brand svg{width:28px;height:32px}
+ .folio-ui .header-actions{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px}.folio-ui .header-actions button,.folio-ui .environment-settings>summary{min-height:40px;text-align:center;padding:8px 6px;background:#14272380;border:1px solid var(--line);font-size:11px}
+ .folio-ui .workspace,.folio-ui.tools-collapsed .workspace{display:flex;flex-direction:column;gap:0;min-height:0}.case-introduction{align-self:stretch;padding:28px 0 0;display:grid;grid-template-columns:1fr auto;column-gap:16px}.case-introduction h2{font-size:34px;line-height:1.5;max-width:6.5em;margin-bottom:12px;grid-column:1}.case-premise{grid-column:1;font-size:11px;line-height:1.9;margin-bottom:17px}.invitation{display:none}.case-begin{grid-column:2;grid-row:1/3;align-self:center;width:94px;min-height:94px;flex-direction:column;justify-content:center;gap:12px;font-size:12px}.case-save{display:none}.case-free{grid-column:1/-1;justify-self:start;font-size:11px;margin-bottom:8px}
+ .folio-ui .artifact-heading,.folio-ui .artifact-pane.domain-open .artifact-heading{padding-top:24px}.folio-ui .identity h1{font-size:19px}.folio-ui .artifact-pane{min-height:0}.folio-ui .render-stage,.folio-ui.tools-collapsed .render-stage,.folio-ui .artifact-pane.domain-open .render-stage{height:340px;min-height:300px;max-height:none;flex:auto}.folio-ui .stage-caption{padding-bottom:18px;gap:5px}.folio-ui .stage-caption span:last-child{font-size:10px}
+ .folio-ui .film-shade{background:linear-gradient(#0c1919f2 0,#0c1919d9 28%,#0c191940 52%,#0c1919e8 85%)}
+ .collection-index{padding:0;margin-bottom:18px}.folio-ui .relic{min-height:76px;padding:12px 3px;gap:5px}.folio-ui .relic b{font-size:12px}.folio-ui .relic small{font-size:9px;max-width:7em;line-height:1.6;text-align:center}
+ .folio-ui .chapter-feedback{display:block;font-size:11px;line-height:1.7;padding:12px 0}.folio-ui .chapter-feedback span{display:block;margin-top:3px}
+ .folio-ui .ritual-hud{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:16px}.folio-ui .ritual-readout{grid-column:1/-1;width:100%;max-width:none}.folio-ui .ritual-readout>span{font-size:11px}.folio-ui .ritual-form{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;width:100%;font-size:11px}.folio-ui .ritual-form select{max-width:none;width:70%;min-height:42px}.folio-ui .ritual-hud button{width:100%;min-height:44px;font-size:11px}.folio-ui .ritual-hud #relic-inspect{display:block}
+ .folio-ui footer{padding:12px 0}.relic-context{padding:20px 0;display:block}.relic-context h2{font-size:20px}.relic-context div p{font-size:12px;line-height:1.9}.context-thought{font-size:15px;margin-top:18px;max-width:none}.exploration-keys{flex-wrap:wrap;gap:12px 20px;padding-bottom:20px;font-size:10px}.folio-ui .page-note{font-size:10px}
+ .environment-menu{position:fixed;top:160px;left:18px;right:18px;width:auto;max-height:calc(100svh - 180px);padding:18px}.folio-ui .control-column{inset:12px;width:auto;padding:20px 24px}
+}
+@media(prefers-reduced-motion:reduce){#fool-veil{transition:none}}
+@media(max-width:1100px){.folio-ui .relic{flex:1 1 0;width:auto;min-width:0}.collection-index{min-width:0}}
+body.gesture-immersive .case-introduction,body.gesture-immersive .collection-index,body.gesture-immersive .relic-context,body.gesture-immersive .exploration-keys,body.gesture-immersive .masthead-note,body.fool-preview .relic-context,body.fool-preview .exploration-keys,body.fool-preview .masthead-note{display:none}
+
+.toast.show{position:fixed;z-index:110;left:50%;bottom:24px;transform:translateX(-50%);margin:0;padding:10px 16px;border:1px solid #b49b6a70;background:#101c1df2;color:#eee0c2}
+/* Immersion owns the viewport; the archive's three-column grid stops here. */
+.gesture-immersive{overflow:hidden}
+.folio-ui.gesture-immersive .experience{padding:0;max-width:none;height:100svh}
+.folio-ui.gesture-immersive .glass-shell{position:fixed;inset:0;margin:0}
+.folio-ui.gesture-immersive .workspace,.folio-ui.gesture-immersive.tools-collapsed .workspace{display:block;position:absolute;inset:0;width:100%;height:100%;min-height:0;margin:0;gap:0}
+.folio-ui.gesture-immersive .artifact-pane{display:block;position:absolute;inset:0;width:100%;height:100%;min-height:0;overflow:visible}
+.folio-ui.gesture-immersive .artifact-pane .render-stage{position:absolute;left:6vw;top:10svh;width:57vw;height:76svh;min-height:0;max-height:none;flex:none}
+.folio-ui.gesture-immersive .artifact-heading,.folio-ui.gesture-immersive .artifact-pane.domain-open .artifact-heading{position:fixed;left:32px;top:24px;right:auto;padding:0;pointer-events:none}
+.folio-ui.gesture-immersive .identity h1{font-size:20px;line-height:1.6;color:#eee1c3}
+.folio-ui.gesture-immersive .object-tag,.folio-ui.gesture-immersive .stage-caption,.folio-ui.gesture-immersive .control-column,.folio-ui.gesture-immersive footer,.folio-ui.gesture-immersive .page-note,.folio-ui.gesture-immersive .chapter-bar,.folio-ui.gesture-immersive .chapter-feedback{display:none!important}
+.folio-ui.gesture-immersive header{position:fixed;left:auto;right:24px;top:20px;z-index:60;min-height:0;width:auto;border:0;margin:0;padding:0;display:flex}
+.folio-ui.gesture-immersive header .brand,.folio-ui.gesture-immersive .header-actions>*:not(#camera):not(#gesture-exit){display:none!important}
+.folio-ui.gesture-immersive .header-actions{display:flex;width:auto;max-width:none;gap:8px;flex-wrap:nowrap}
+.folio-ui.gesture-immersive .header-actions button{background:#10231ee0;border:1px solid #bca57266;padding:9px 14px;min-height:40px;font-size:12px}
+#gesture-exit{display:none}.folio-ui.gesture-immersive .header-actions #gesture-exit{display:block!important}
+.folio-ui.gesture-immersive .collection-index{display:block;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:30;width:560px;max-width:calc(100% - 48px);margin:0;padding:0;border:0;background:#10231ee8}
+.folio-ui.gesture-immersive .collection-index h2,.folio-ui.gesture-immersive .collection-index>p{display:none}
+.folio-ui.gesture-immersive .shell-toolbar{display:block;padding:0;margin:0}
+.folio-ui.gesture-immersive .shell-toolbar .relics{display:flex;flex-direction:row;gap:0;width:100%;padding:0}
+.folio-ui.gesture-immersive .relic{flex:1 1 0;width:auto;min-width:0;min-height:54px;align-items:center;justify-content:center;padding:12px 7px;border:0;border-bottom:1px solid #bca57244}
+.folio-ui.gesture-immersive .relic b{font-size:14px}.folio-ui.gesture-immersive .relic small{display:none}
+.folio-ui.gesture-immersive .relic.active:after{top:auto;bottom:4px;left:calc(50% - 2px);width:4px;height:4px}
+.folio-ui.gesture-immersive .ritual-hud{position:fixed;bottom:88px;left:50%;transform:translateX(-50%);z-index:25;width:max-content;max-width:calc(100% - 48px);min-height:0;margin:0;padding:7px 14px;display:flex;gap:0;border:0;background:#10231ed9}
+.folio-ui.gesture-immersive .ritual-hud>.ritual-readout,.folio-ui.gesture-immersive .ritual-hud>progress,.folio-ui.gesture-immersive .ritual-hud>button,.folio-ui.gesture-immersive .ritual-hud>.relic-source{display:none!important}
+#hand-status{display:none}.folio-ui.gesture-immersive #hand-status{display:block;font-size:12px;line-height:1.8;color:#e8d8b4;text-align:center}
+.folio-ui.gesture-immersive #fool-veil.avatar-active{opacity:1;mask-image:linear-gradient(black 76%,transparent 100%)}
+.folio-ui.gesture-immersive .film-shade{background:linear-gradient(90deg,#07151230,#07151208 60%,#07151228)}
+.folio-ui.gesture-immersive .toast.show{bottom:132px}
+.fool-hands{position:fixed;inset:0;z-index:15;pointer-events:none;opacity:0}.fool-hands.active{opacity:1}
+.gesture-echo{display:none;position:fixed;left:24px;bottom:24px;top:auto;z-index:25;width:164px;padding:12px;background:#10231ee8;color:#e7d5ad;pointer-events:none}
+.gesture-echo.active{display:block}.echo-title{font:14px/1.6 'Veil Serif',SimSun,serif;color:#d1bb8b}.echo-title span{display:none}
+.gesture-echo canvas{display:block;width:100%;height:88px}.gesture-echo strong{display:block;font:14px/1.6 'Veil Serif',SimSun,serif}.gesture-echo small{display:block;margin-top:4px;color:#c7bea6;font-size:10px;line-height:1.6}
+@media(max-width:900px) and (orientation:portrait){
+ .folio-ui.gesture-immersive .artifact-pane .render-stage{left:4vw;top:32svh;width:92vw;height:52svh}
+ .folio-ui.gesture-immersive .artifact-heading,.folio-ui.gesture-immersive .artifact-pane.domain-open .artifact-heading{left:18px;top:18px}
+ .folio-ui.gesture-immersive .identity h1{font-size:17px}
+ .folio-ui.gesture-immersive header{top:58px;right:14px}
+ .folio-ui.gesture-immersive .header-actions button{font-size:11px;padding:8px 11px;min-height:38px}
+ .folio-ui.gesture-immersive .collection-index{bottom:max(12px,env(safe-area-inset-bottom));max-width:calc(100% - 24px);width:560px}
+ .folio-ui.gesture-immersive .relic{min-height:52px;padding:10px 3px}.folio-ui.gesture-immersive .relic b{font-size:12px}
+ .folio-ui.gesture-immersive .ritual-hud{bottom:78px;max-width:calc(100% - 32px);padding:5px 11px}.folio-ui.gesture-immersive #hand-status{font-size:10px}
+ .folio-ui.gesture-immersive #fool-veil.avatar-active{mask-image:linear-gradient(black 27%,transparent 57%)}
+ .gesture-echo{left:12px;top:84px;bottom:auto;width:92px;padding:8px}.gesture-echo canvas{height:58px}.echo-title{font-size:11px}.gesture-echo strong{font-size:11px}.gesture-echo small{font-size:9px}
+}
+@media(max-height:500px) and (orientation:landscape){
+ .folio-ui.gesture-immersive .artifact-pane .render-stage{left:8vw;top:6svh;width:52vw;height:76svh}
+ .folio-ui.gesture-immersive .collection-index{bottom:10px;width:430px}.folio-ui.gesture-immersive .relic{min-height:42px}.folio-ui.gesture-immersive .relic b{font-size:12px}
+ .folio-ui.gesture-immersive .ritual-hud{bottom:61px;padding:3px 10px}.folio-ui.gesture-immersive #hand-status{font-size:10px}.gesture-echo{width:116px;left:12px;bottom:12px;padding:8px}.gesture-echo canvas{height:45px}.gesture-echo small{display:none}
+}

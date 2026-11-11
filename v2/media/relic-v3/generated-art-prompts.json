@@ -1,0 +1,26 @@
+{
+  "tool": "built-in image_gen",
+  "cards": [
+    {
+      "id": "law",
+      "prompt": "Create a single production texture: flat full-frame vertical 2:3 antique tarot illustration, no photographed card, no perspective of the print, no text, no letters. Original unofficial Lord of Mysteries imperial occult imagery. Subject: a stern magistrate in long black Victorian robes seated at an imposing stone tribunal, holding an engraved tablet of law; coherent anatomy, arches and a deserted court behind. Masterful 19th-century copperplate engraving with extremely fine cross-hatching on worn warm ivory paper, soot-black ink, restrained antique gold, tiny oxblood accents. Dense figurative illustration fully fills the inner panel. Narrow symmetrical ornamental border 5% inside the edges with gently worn corners. Match an antique engraved Black Emperor tarot card, serious, mysterious, beautiful fine-art print, no neon, no cartoon, no plastic render. Clear complete subject, no cropped architecture."
+    },
+    {
+      "id": "order",
+      "prompt": "Create a single production texture: flat full-frame vertical 2:3 antique tarot illustration, no photographed card, no perspective of the print, no text, no letters. Original unofficial Lord of Mysteries imperial occult imagery. Subject: a monumental Victorian clock tower rising over a foggy symmetrical city boulevard, intricate brass clockwork and disciplined architectural perspective, no people. Masterful 19th-century copperplate engraving with extremely fine cross-hatching on worn warm ivory paper, soot-black ink, restrained antique gold, tiny oxblood accents. Dense figurative illustration fully fills the inner panel. Narrow symmetrical ornamental border 5% inside the edges with gently worn corners. Match an antique engraved Black Emperor tarot card, serious, mysterious, beautiful fine-art print, no neon, no cartoon, no plastic render. Clear complete subject, no cropped architecture."
+    },
+    {
+      "id": "distortion",
+      "prompt": "Create a single production texture: flat full-frame vertical 2:3 antique tarot illustration, no photographed card, no perspective of the print, no text, no letters. Original unofficial Lord of Mysteries imperial occult imagery. Subject: an abandoned spiral staircase and gothic doorway folding into an impossible but carefully drafted architectural space, fine perspective engraving, no people. Masterful 19th-century copperplate engraving with extremely fine cross-hatching on worn warm ivory paper, soot-black ink, restrained antique gold, tiny oxblood accents. Dense figurative illustration fully fills the inner panel. Narrow symmetrical ornamental border 5% inside the edges with gently worn corners. Match an antique engraved Black Emperor tarot card, serious, mysterious, beautiful fine-art print, no neon, no cartoon, no plastic render. Clear complete subject, no cropped architecture."
+    },
+    {
+      "id": "majesty",
+      "prompt": "Create a single production texture: flat full-frame vertical 2:3 antique tarot illustration, no photographed card, no perspective of the print, no text, no letters. Original unofficial Lord of Mysteries imperial occult imagery. Subject: an ancient imperial black crown on a velvet cushion beneath a tall gothic canopy, an upright sword and heavy ceremonial drapery, tangible weight and realistic material. Masterful 19th-century copperplate engraving with extremely fine cross-hatching on worn warm ivory paper, soot-black ink, restrained antique gold, tiny oxblood accents. Dense figurative illustration fully fills the inner panel. Narrow symmetrical ornamental border 5% inside the edges with gently worn corners. Match an antique engraved Black Emperor tarot card, serious, mysterious, beautiful fine-art print, no neon, no cartoon, no plastic render. Clear complete subject, no cropped architecture."
+    }
+  ],
+  "notebook": {
+    "file": "antigonus-cover.png",
+    "prompt": "Create a production texture asset, flat straight-on vertical 2:3 antique leather book cover design only, no photographed book, no tabletop, no perspective, no cast shadows, NO readable words or letters. Original occult family notebook from a Victorian gothic fantasy. Match refined 19th-century copperplate engraving: intricate thin warm antique-gold tooling embossed into extremely dark worn brown leather, two facing lean wolves framing a closed pointed gothic gate, a restrained small crescent above, architectural filigree and elegant narrow rectangular border, subtle tiny leaf motifs, exquisite detailed cross-hatching, solemn secretive old family archive. Complete emblem centered, readable silhouette, surrounding leather mostly plain with natural fine grain and rubbed corners. Limited dark umber, charcoal and muted old gold palette, small ivory highlights only. No neon, no modern icons, no cartoon, no plastic, no glow, no thick ornaments. This is a flat base-color print texture for the front of a real 3D notebook."
+  },
+  "web_delivery": "768x1152 WebP at quality 92; original PNG retained"
+}

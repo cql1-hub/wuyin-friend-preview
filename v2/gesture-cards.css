@@ -1,0 +1,27 @@
+/* The Fool card preview: portrait + gesture cards, without the archive chrome. */
+body.fool-preview .glass-shell,
+body.fool-preview .ritual-hud,
+body.fool-preview footer,
+body.fool-preview .page-note,
+body.fool-preview .scene-controls,
+body.fool-preview .audio-controls{display:none!important}
+body.fool-preview .header-actions>:not(#avatar-preview){display:none!important}
+body.fool-preview .header-actions{gap:0}
+body.fool-preview #avatar-preview{display:block!important}
+body.fool-preview #fool-veil.avatar-active{opacity:.95}
+body.gesture-immersive .ritual-hud .ritual-form{display:none!important}
+@media(max-width:600px){#avatar-preview{display:block!important}}
+#card-detail{position:fixed;inset:0;z-index:95;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 45%,rgba(13,20,18,.72),rgba(2,5,7,.94));backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);padding:24px}
+#card-detail[hidden]{display:none!important}
+#card-detail figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;max-height:94vh}
+#card-detail img{display:block;max-width:min(62vw,520px);max-height:78vh;width:auto;height:auto;border:1px solid rgba(203,174,118,.66);box-shadow:0 30px 90px rgba(0,0,0,.65),0 0 60px rgba(190,157,95,.1);background:#090d0b}
+#card-detail figcaption{color:#d9c79c;font:15px SimSun,serif;letter-spacing:.16em;text-align:center}
+#card-detail figcaption small{display:block;margin-top:7px;color:rgba(217,199,156,.55);font:10px "Microsoft YaHei",sans-serif;letter-spacing:.1em}
+#card-detail-close{position:fixed;top:24px;right:26px;min-height:38px;padding:8px 16px;border:1px solid rgba(203,174,118,.5);border-radius:999px;background:rgba(12,18,16,.72);color:#d9c79c;font:12px "Microsoft YaHei",sans-serif;letter-spacing:.08em;cursor:pointer}
+#card-detail-close:hover{background:rgba(203,174,118,.16)}
+@media(max-width:700px){
+ #card-detail{padding:16px}
+ #card-detail img{max-width:86vw;max-height:70vh}
+ #card-detail-close{top:14px;right:14px;min-height:34px;padding:6px 13px}
+}
+

@@ -1,0 +1,25 @@
+/* Scene imagery stays full size and sharp; the existing relic UI keeps its layout. */
+body{isolation:isolate}
+#world-scenery{position:fixed;inset:0;z-index:-3;background:#070b0b;pointer-events:none;overflow:hidden}
+.world-scene{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .65s cubic-bezier(.16,1,.3,1),visibility .65s;isolation:isolate}
+.world-scene.visible{opacity:1;visibility:visible}
+.scene-layer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.scene-light{mix-blend-mode:screen}
+#background-film{transition:opacity .65s;z-index:-2}
+#background-film.film-hidden{opacity:0;pointer-events:none}
+.film-shade{z-index:-1}
+.scene-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:-8px 0 18px;min-height:38px;color:#e0e7da;font-size:11px;text-shadow:0 1px 4px #020905}
+.scene-controls label{display:flex;align-items:center;gap:10px}
+.scene-controls select{max-width:190px;min-height:38px;padding:8px 30px 8px 12px;border:1px solid #c4d5c83b;border-radius:8px;background:#102127e6;color:#f1f2e7;cursor:pointer;font:inherit}
+.scene-controls select[aria-busy=true]{opacity:.65}
+.scene-controls select:disabled{cursor:wait}
+.scene-controls option{background:#102127;color:#f1f2e7}
+.scene-controls button{font-size:11px;padding:7px 12px;min-height:38px;background:#102127b3}
+.scene-controls a{font-size:10px;color:#e0e7da;text-decoration-color:#c6d3c36b}
+#scene-status{color:#d5dfd0;font-size:10px}
+.official-scenery .film-shade{background:linear-gradient(110deg,#020a0c35,#020a0c08 65%,#020a0c30)}
+.scenery-only .glass-shell,.scenery-only .page-note,.scenery-only .chapter-bar,.scenery-only #help-toggle,.scenery-only #tools-toggle{display:none}
+.scenery-only .scene-controls{position:fixed;left:44px;bottom:28px;right:44px;margin:0;padding:14px 18px;background:#061116c9;border:1px solid #c4d5c82b;border-radius:12px;width:fit-content;max-width:calc(100% - 88px)}
+.scenery-only .film-shade{background:linear-gradient(#02090a30,transparent 30%,transparent 70%,#02090a45)}
+@media(max-width:720px){.scene-controls{gap:8px 12px;margin:0 0 14px}.scene-controls label{gap:7px}.scene-controls select{max-width:158px}.scene-controls a{margin-left:auto}#scene-status{flex-basis:100%;order:4}.scenery-only .scene-controls{left:14px;right:14px;bottom:16px;max-width:calc(100% - 28px);padding:12px}.scene-layer{object-position:48% 50%}}
+@media(prefers-reduced-motion:reduce){.world-scene,#background-film{transition:none}}

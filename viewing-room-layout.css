@@ -1,0 +1,250 @@
+/* 观景室布局：结构、摆位、选中态。悬停淡光由 relic-present.css 负责，这里不加光晕。 */
+:root {
+  --fog-ink: #0e1013;
+  --silver: #9aa3ab;
+  --ivory: #c4b8a0;
+  --type: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "Times New Roman", serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: var(--fog-ink);
+  color: var(--ivory);
+  font-family: var(--type);
+  overflow: hidden;
+}
+
+.hall {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  cursor: default;
+}
+
+.hall-atmosphere,
+.hall-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hall-bg {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.1s ease;
+}
+
+.hall-bg.is-default {
+  background-image: url("relics/bg-hall.jpg");
+  opacity: 1;
+}
+
+.hall-bg.is-focus { visibility: hidden; }
+
+.hall-bg.is-focus[data-ref="arodes"] { background-image: url("relics/ref-arrodes.jpg"); }
+.hall-bg.is-focus[data-ref="pendulum"] { background-image: url("relics/ref-pendulum-final.jpg"); }
+.hall-bg.is-focus[data-ref="notes"] { background-image: url("relics/ref-notes.jpg"); }
+
+.hall[data-view="focus"][data-focus="arodes"] .hall-bg.is-focus[data-ref="arodes"],
+.hall[data-view="focus"][data-focus="pendulum"] .hall-bg.is-focus[data-ref="pendulum"],
+.hall[data-view="focus"][data-focus="notes"] .hall-bg.is-focus[data-ref="notes"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hall > .exhibit-spot {
+  position: absolute;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+  transition: opacity 0.8s ease, transform 1s ease, left 1s ease, right 1s ease, top 1s ease, bottom 1s ease, width 1s ease;
+}
+
+.hall > .exhibit-spot:focus { outline: none; }
+.hall > .exhibit-spot:focus-visible { outline: 1px solid rgba(154, 163, 171, 0.45); outline-offset: 8px; }
+
+.hall .exhibit-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 总览摆位，对标 ref-overview：左镜、顶悬灵摆、右前纸牌与合上的笔记 */
+.exhibit-spot[data-relic="arodes"] {
+  left: 8%;
+  bottom: 12%;
+  width: min(26vw, 300px);
+}
+
+.exhibit-spot[data-relic="pendulum"] {
+  left: 49%;
+  top: 0;
+  width: min(15vw, 190px);
+  transform: translateX(-50%);
+}
+
+.exhibit-spot[data-relic="cards"] {
+  left: 42%;
+  bottom: 9%;
+  width: min(36vw, 460px);
+}
+
+.exhibit-spot[data-relic="notes"] {
+  right: 5.5%;
+  bottom: 8%;
+  width: min(24vw, 320px);
+}
+
+.hall[data-view="focus"] > .exhibit-spot {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.hall[data-view="focus"][data-focus="arodes"] .exhibit-spot[data-relic="arodes"],
+.hall[data-view="focus"][data-focus="pendulum"] .exhibit-spot[data-relic="pendulum"],
+.hall[data-view="focus"][data-focus="cards"] .exhibit-spot[data-relic="cards"],
+.hall[data-view="focus"][data-focus="notes"] .exhibit-spot[data-relic="notes"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 4;
+  left: 50%;
+  right: auto;
+  top: 46%;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+}
+
+.hall[data-view="focus"][data-focus="arodes"] .exhibit-spot[data-relic="arodes"] {
+  width: min(34vw, 400px);
+  top: 46%;
+}
+
+.hall[data-view="focus"][data-focus="pendulum"] .exhibit-spot[data-relic="pendulum"] {
+  width: min(22vw, 260px);
+  top: 44%;
+}
+
+.hall[data-view="focus"][data-focus="cards"] .exhibit-spot[data-relic="cards"] {
+  width: min(58vw, 760px);
+  top: 46%;
+}
+
+.hall[data-view="focus"][data-focus="notes"] .exhibit-spot[data-relic="notes"] {
+  width: min(34vw, 420px);
+  top: 45%;
+}
+
+/* 特写背景已经包含遗物。窄屏改用独立图，以免背景裁掉遗物。 */
+@media (aspect-ratio > 3/5) {
+  .hall[data-view="focus"] > .exhibit-spot:not([data-relic="cards"]) > :is(.exhibit-art, .exhibit-glow) {
+    visibility: hidden;
+  }
+}
+
+@media (aspect-ratio <= 3/5) {
+  .hall[data-view="focus"] .hall-atmosphere > .hall-bg.is-focus { display: none; }
+  .hall[data-view="focus"][data-focus="arodes"] .exhibit-spot[data-relic="arodes"],
+  .hall[data-view="focus"][data-focus="notes"] .exhibit-spot[data-relic="notes"] {
+    width: 60vw;
+  }
+  .hall[data-view="focus"][data-focus="pendulum"] .exhibit-spot[data-relic="pendulum"] { width: 40vw; }
+}
+
+.exhibit-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8.5%;
+  z-index: 5;
+  text-align: center;
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  letter-spacing: 0.42em;
+  font-weight: 400;
+  color: #e6e1d6;
+  text-indent: 0.42em;
+  pointer-events: none;
+}
+
+.hall-mark {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 3.6%;
+  z-index: 5;
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.48em;
+  text-indent: 0.48em;
+  color: rgba(196, 184, 160, 0.62);
+  pointer-events: none;
+}
+
+.hall-mark::before,
+.hall-mark::after {
+  content: "";
+  display: inline-block;
+  width: min(14vw, 120px);
+  height: 1px;
+  margin: 0 0.9em;
+  vertical-align: middle;
+  background: linear-gradient(90deg, transparent, rgba(154, 163, 171, 0.45), transparent);
+}
+
+.hall-return,
+.hall-back-to-chamber {
+  position: absolute;
+  z-index: 6;
+  color: var(--silver);
+  text-decoration: none;
+  background: none;
+  border: 0;
+  font: 400 0.78rem/1 var(--type);
+  letter-spacing: 0.22em;
+  opacity: 0.72;
+  cursor: pointer;
+  padding: 0.4rem 0.2rem;
+}
+
+.hall-return:hover,
+.hall-back-to-chamber:hover,
+.hall-return:focus-visible,
+.hall-back-to-chamber:focus-visible {
+  opacity: 1;
+  outline: none;
+}
+
+.hall-back-to-chamber {
+  top: 1.4rem;
+  left: 1.6rem;
+}
+
+.hall-return {
+  top: 1.4rem;
+  right: 1.6rem;
+}
+
+@media (max-width: 720px) {
+  .exhibit-spot[data-relic="arodes"] { width: 36vw; left: 2%; }
+  .exhibit-spot[data-relic="pendulum"] { width: 22vw; }
+  .exhibit-spot[data-relic="cards"] { width: 52vw; left: 28%; }
+  .exhibit-spot[data-relic="notes"] { width: 34vw; right: 2%; }
+  .hall[data-view="focus"][data-focus="cards"] .exhibit-spot[data-relic="cards"] { width: 92vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hall-bg, .hall > .exhibit-spot { transition: none; }
+}

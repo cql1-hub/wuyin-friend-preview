@@ -1,0 +1,29 @@
+.table-assembly{display:none;position:fixed;inset:0;z-index:10;pointer-events:none}
+body.fool-preview .table-assembly{display:block}
+.fog-eye{position:absolute;left:34vw;top:24vh;width:76px;aspect-ratio:2/1;background:url('media/long-table/fog-eye.png') center/contain no-repeat;opacity:0;pointer-events:none;animation:fog-glance 38s ease-in-out infinite}
+@keyframes fog-glance{0%,2%,12%,100%{opacity:0}5%,8%{opacity:.24}}
+.table-illustration{position:absolute;left:0;bottom:2vh;width:min(70vw,1100px);aspect-ratio:3/2;pointer-events:none}
+.table-illustration>img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;filter:brightness(.88) saturate(.78)}
+.table-point,.table-tarot,.identity-object{position:absolute;pointer-events:auto;cursor:pointer;color:#e6d8b8}
+.table-point{border:0;background:none;min-height:36px;padding:4px 6px;display:flex;align-items:center;gap:6px;font:11px/1.5 'Veil Serif',SimSun,serif;text-shadow:0 1px 6px #030c0d,0 1px 3px #030c0d}
+.table-point::before{content:'';width:7px;height:7px;flex:none;border:1px solid #dac28c;transform:rotate(45deg);background:#b89b6990;box-shadow:0 0 8px #e3c98c70}
+.table-point:hover,.table-point:focus-visible{background:#0d1b1bbd;color:#fff0d0}.table-point:hover::before,.table-point:focus-visible::before{background:#f2da9c}
+.empty-seat{left:10%;top:63%}.world-seat{left:56%;top:55%}.diary-page{left:39%;top:49%;z-index:3}.newspaper{left:32%;top:58%}
+.newspaper img{position:absolute;width:70px;max-width:none;left:-14px;top:-35px;opacity:.8;filter:brightness(.75) saturate(.65);pointer-events:none}.newspaper span{position:relative}
+.table-cards{position:absolute;inset:0;pointer-events:none}
+.table-tarot{width:clamp(22px,2.5vw,38px);height:clamp(35px,4vw,61px);min-height:0;padding:0;border:0;background:none;transform:translate(-50%,-50%) rotate(var(--angle)) skewX(-18deg) scaleY(.46);filter:drop-shadow(0 2px 3px #000b)}
+.table-tarot span{display:block;width:100%;height:100%;background-image:url('media/long-table/tarot-seven.png');background-size:700% 100%;background-position:var(--card-position) center;background-repeat:no-repeat;filter:brightness(.8) saturate(.7)}
+.table-tarot:hover,.table-tarot:focus-visible{background:none;filter:drop-shadow(0 0 5px #e9d2a3);outline:1px solid #e0c88e;outline-offset:3px}
+.identity-objects{position:absolute;left:2.5vw;top:19vh;width:70px;display:flex;flex-direction:column;gap:3px;pointer-events:none}
+.identity-object{position:relative;width:70px;height:42px;min-height:0;padding:0;border:0;background-color:transparent;background-image:url('media/long-table/five-identities.png');background-size:100% 500%;background-position:center var(--identity-position);background-repeat:no-repeat;opacity:.64;filter:drop-shadow(0 2px 5px #000);transition:opacity .2s}
+.identity-object:hover,.identity-object:focus-visible,.identity-object[aria-pressed=true]{opacity:1;background-color:transparent;outline:1px solid #c6b17a;outline-offset:2px}
+.table-message{position:absolute;left:50%;bottom:3vh;transform:translateX(-50%);width:max-content;max-width:min(85vw,650px);margin:0;text-align:center;color:#e8dab9;font:15px/1.8 'Veil Serif',SimSun,serif;letter-spacing:.04em;text-shadow:0 2px 9px #020b0a,0 1px 3px #020b0a;pointer-events:none}
+@media(max-width:700px){
+ .table-illustration{width:100vw;left:0;bottom:11vh}
+ .fog-eye{left:18vw;top:32vh;width:52px}
+ .identity-objects{left:10px;top:17vh;width:48px;gap:1px}.identity-object{width:48px;height:30px}
+ .table-point{font-size:10px;min-height:36px;gap:4px;padding:3px}.table-point::before{width:6px;height:6px}.empty-seat{left:5%;top:62%}.world-seat{left:54%;top:53%}.diary-page{left:34%;top:44%}.newspaper{left:29%;top:58%}
+ .newspaper img{width:48px;left:-8px;top:-22px}
+ .table-tarot{width:21px;height:34px}.table-message{bottom:max(16px,env(safe-area-inset-bottom));width:90%;font-size:12px;line-height:1.7}
+}
+@media(prefers-reduced-motion:reduce){.identity-object{transition:none}.fog-eye{animation:none}}

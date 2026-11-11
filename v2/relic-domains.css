@@ -1,0 +1,6 @@
+/* Domains use the whole exhibit pane, including the space behind its title. */
+.artifact-pane.domain-open{position:relative;overflow:hidden}
+.artifact-pane.domain-open .render-stage{position:absolute;inset:0;height:100%;min-height:0;z-index:0}
+.artifact-pane.domain-open .artifact-heading{grid-row:1;position:relative;z-index:2;pointer-events:none}
+.artifact-pane.domain-open .stage-caption{grid-row:3;position:relative;z-index:2;pointer-events:none}
+.artifact-pane.domain-open .identity,.artifact-pane.domain-open .object-tag{text-shadow:0 2px 10px #031019,0 1px 3px #031019}

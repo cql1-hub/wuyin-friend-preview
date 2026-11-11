@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>雾隐之境 · 观景室</title>
+  <link rel="stylesheet" href="relic-present.css">
+  <link rel="stylesheet" href="viewing-room-layout.css">
+</head>
+<body>
+  <div class="hall" data-view="overview" aria-label="雾隐之境 · 观景室">
+    <div class="hall-atmosphere" aria-hidden="true">
+      <div class="hall-bg is-default"></div>
+      <div class="hall-bg is-focus" data-ref="arodes"></div>
+      <div class="hall-bg is-focus" data-ref="pendulum"></div>
+      <div class="hall-bg is-focus" data-ref="notes"></div>
+    </div>
+
+    <a class="hall-back-to-chamber" href="v2/index.html">返回陈列室</a>
+
+    <button class="exhibit-spot" type="button" data-relic="arodes" aria-label="阿罗德斯">
+      <img class="exhibit-art" src="relics/relic-arrodes.png" alt="">
+    </button>
+
+    <button class="exhibit-spot" type="button" data-relic="pendulum" aria-label="黄水晶灵摆">
+      <img class="exhibit-art" src="relics/relic-pendulum.png" alt="">
+    </button>
+
+    <button class="exhibit-spot" type="button" data-relic="cards" aria-label="亵渎之牌">
+      <img class="exhibit-art" src="relics/relic-cards.png" alt="">
+    </button>
+
+    <button class="exhibit-spot" type="button" data-relic="notes" aria-label="安提哥努斯笔记">
+      <img class="exhibit-art" src="relics/relic-notes.png" alt="">
+    </button>
+
+    <p class="exhibit-name" hidden></p>
+    <p class="hall-mark">雾隐之境 · 观景室</p>
+    <button class="hall-return" type="button" hidden>返回展厅</button>
+  </div>
+  <script type="module" src="viewing-room-nav.js"></script>
+  <script defer src="relic-present.js"></script>
+</body>
+</html>
